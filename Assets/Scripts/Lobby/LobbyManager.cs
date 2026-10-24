@@ -41,6 +41,7 @@ public class LobbyManager : SingletonBase<LobbyManager>
             // Relay 생성
             var data = await RelayManager.Instance.CreateRelay(3, "production");
 
+            // 연결할 곳 설정 및 Host 시작
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(data.IPv4Address, data.Port, data.AllocationIDBytes, data.Key, data.ConnectionData);
             NetworkManager.Singleton.StartHost();
 

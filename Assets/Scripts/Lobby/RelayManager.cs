@@ -33,6 +33,7 @@ public class RelayManager : SingletonBase<RelayManager>
 
     public async Task<RelayHostData> CreateRelay(int maxConn, string environment)
     {
+        // 초기화 설정
         InitializationOptions options = new InitializationOptions().SetEnvironmentName(environment);
 
         await UnityServices.InitializeAsync(options);
@@ -43,8 +44,10 @@ public class RelayManager : SingletonBase<RelayManager>
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
         }
 
-        Allocation allocation = await Unity.Services.Relay.RelayService.Instance.CreateAllocationAsync(maxConn);
+        // 방 생성
+        Allocation allocation = await Unity.Services.Relay.RelayService.Instance.CreateAllocationAsync(maxConn - 1);
 
+        // 방 데이터 기록
         RelayHostData data = new RelayHostData
         {
             IPv4Address = allocation.RelayServer.IpV4,
@@ -54,7 +57,6 @@ public class RelayManager : SingletonBase<RelayManager>
             ConnectionData = allocation.ConnectionData,
             Key = allocation.Key
         };
-
         data.JoinCode = await Unity.Services.Relay.RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
         return data;
