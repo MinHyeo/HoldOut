@@ -7,23 +7,21 @@ using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine.UI;
+using System.Threading.Tasks;
 
 public class LobbyManager : SingletonBase<LobbyManager>
 {
-    [SerializeField] private Button _createRoomButton;
-
     private string _playerId => AuthenticationService.Instance.PlayerId;
     private Lobby _currentLobby;
+    public Lobby CurrentLobby => _currentLobby;
 
     private async void Start()
     {
         await UnityServices.InitializeAsync();
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
-
-        _createRoomButton.onClick.AddListener(CreateRoom);
     }
 
-    public async void CreateRoom()
+    public async Task<bool> CreateRoom()
     {
         try
         {
@@ -46,10 +44,12 @@ public class LobbyManager : SingletonBase<LobbyManager>
             NetworkManager.Singleton.StartHost();
 
             Debug.Log("방 생성");
+            return true;
         }
         catch(System.Exception e)
         {
             Debug.LogError(e);
+            return false;
         }
     }
 }
