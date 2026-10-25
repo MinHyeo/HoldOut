@@ -50,7 +50,11 @@ public class LobbyView : UIBase
 
     private async void OnClickRoom(string roomId)
     {
-
+        if(await LobbyManager.Instance.JoinRoom(roomId))
+        {
+            UIManager.Instance.CloseUI(UIRootType.MainUI, UIType.LobbyView);
+            UIManager.Instance.OpenUI(UIRootType.MainUI, UIType.RoomView);
+        }
     }
 
     private async void OnClickCreateRoomButton()

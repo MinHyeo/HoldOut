@@ -61,4 +61,34 @@ public class RelayManager : SingletonBase<RelayManager>
 
         return data;
     }
+
+    public async Task<RelayJoinData> JoinRelay(string joinCode, string environment)
+    {
+        // 초기화 설정
+        InitializationOptions options = new InitializationOptions().SetEnvironmentName(environment);
+
+        await UnityServices.InitializeAsync(options);
+
+        // 로그인이 안되어 있다면 익명으로 로그인
+        if (AuthenticationService.Instance.IsSignedIn == false)
+        {
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        }
+
+        // 방 정보 불러오기
+        JoinAllocation allocation = await Unity.Services.Relay.RelayService.Instance.JoinAllocationAsync(joinCode);
+
+        RelayJoinData data = new RelayJoinData
+        {
+            IPv4Address = allocation.RelayServer.IpV4,
+            Port = (ushort)allocation.RelayServer.Port,
+            AllocationID = allocation.AllocationId,
+            AllocationIDBytes = allocation.AllocationIdBytes,
+            ConnectionData = allocation.ConnectionData,
+            HostConnectionData = allocation.HostConnectionData,
+            Key = allocation.Key,
+        };
+
+        return data;
+    }
 }
