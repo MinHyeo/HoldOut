@@ -23,7 +23,7 @@ public class LobbyManager : SingletonBase<LobbyManager>
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
-    public async Task<bool> CreateRoom()
+    public async Task<bool> CreateRoom(string playerName)
     {
         try
         {
@@ -34,7 +34,7 @@ public class LobbyManager : SingletonBase<LobbyManager>
             var options = new CreateLobbyOptions
             {
                 IsPrivate = false,
-                Player = new Player(_playerId),
+                Player = new Player(playerName),
                 Data = new Dictionary<string, DataObject>
                 {
                     {
@@ -109,7 +109,7 @@ public class LobbyManager : SingletonBase<LobbyManager>
         catch (System.Exception e)
         {
             Debug.LogError($"[Lobby] 방 입장 실패 {e.Message}");
-            LeaveRoom();
+            await LeaveRoom();
             return false;
         }
     }

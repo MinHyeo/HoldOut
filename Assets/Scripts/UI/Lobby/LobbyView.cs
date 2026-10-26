@@ -1,20 +1,28 @@
 ﻿using System.Collections.Generic;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class LobbyView : UIBase
 {
+    [Header("Name Input")]
+    [SerializeField] private InputField _nameInput;
+
+    [Header("Room List")]
     [SerializeField] private GameObject _roomPrefab;
     [SerializeField] private Transform _content;
     [SerializeField] private UIButton _refreshButton;
     private readonly List<RoomListItem> _items = new List<RoomListItem>();
 
+    [Header("Buttons")]
     [SerializeField] private UIButton _createRoomButton;
     [SerializeField] private UIButton _joinRoomButton;
 
     private void OnEnable()
     {
         Invoke("RoomListRefresh", 1f);
+        _refreshButton.BindOnClickButtonEvent(RoomListRefresh);
 
         _createRoomButton.BindOnClickButtonEvent(OnClickCreateRoomButton);
         _joinRoomButton.BindOnClickButtonEvent(OnClickJoinRoomButton);
@@ -22,6 +30,7 @@ public class LobbyView : UIBase
 
     private void OnDisable()
     {
+        _refreshButton.UnBindOnClickButtonEvent(RoomListRefresh);
         _createRoomButton.UnBindOnClickButtonEvent(OnClickCreateRoomButton);
         _joinRoomButton.UnBindOnClickButtonEvent(OnClickJoinRoomButton);
     }
@@ -61,7 +70,8 @@ public class LobbyView : UIBase
     {
         // 방 만들어지는 동안 비활성화
         _createRoomButton.SetInteractable(false);
-        bool isSuccess = await LobbyManager.Instance.CreateRoom();
+        string name = _nameInput.text;
+        bool isSuccess = await LobbyManager.Instance.CreateRoom(name);
         _createRoomButton.SetInteractable(true);
 
         // 룸 UI로 전환
