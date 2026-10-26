@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1556a4617e95c2d4a8b4c9dbea29f4a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LobbyView
+  _nameInput: {fileID: 8726085440746741080}
   _roomPrefab: {fileID: 6238336433255308952, guid: 1da53919927bafd46941df1c8c61e0db, type: 3}
   _content: {fileID: 6402649068664604906}
   _refreshButton: {fileID: 5224163554799122019}

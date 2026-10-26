@@ -3,11 +3,12 @@ using Unity.Services.Lobbies.Models;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 
 public class LobbyView : UIBase
 {
     [Header("Name Input")]
-    [SerializeField] private InputField _nameInput;
+    [SerializeField] private TMP_InputField _nameInput;
 
     [Header("Room List")]
     [SerializeField] private GameObject _roomPrefab;

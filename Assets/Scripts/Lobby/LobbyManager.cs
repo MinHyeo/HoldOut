@@ -34,7 +34,16 @@ public class LobbyManager : SingletonBase<LobbyManager>
             var options = new CreateLobbyOptions
             {
                 IsPrivate = false,
-                Player = new Player(playerName),
+                Player = new Player(
+                    id: _playerId,
+                    data: new Dictionary<string, PlayerDataObject>
+                    {
+                        {
+                            "PlayerName",
+                            new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerName)
+                        }
+                    }
+                ),
                 Data = new Dictionary<string, DataObject>
                 {
                     {
