@@ -1,14 +1,15 @@
-﻿using Unity.Services.Core;
-using Unity.Services.Authentication;
-using Unity.Services.Multiplayer;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.Netcode;
-using UnityEngine;
+using Unity.Netcode.Transports.UTP;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
+using Unity.Services.Core.Components;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
-using Unity.Netcode.Transports.UTP;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using Unity.Services.Core.Components;
+using Unity.Services.Multiplayer;
+using UnityEngine;
 
 public class LobbyManager : SingletonBase<LobbyManager>
 {
@@ -16,6 +17,9 @@ public class LobbyManager : SingletonBase<LobbyManager>
     private string _playerId => AuthenticationService.Instance.PlayerId;
     private Lobby _currentLobby;
     public Lobby CurrentLobby => _currentLobby;
+
+    public event Action OnRoomChanged;
+    private ILobbyEvents _lobbyEvents;
 
     private async void Start()
     {
@@ -56,6 +60,7 @@ public class LobbyManager : SingletonBase<LobbyManager>
             // 로비 생성
             Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(_playerId, _maxPlayer, options);
             _currentLobby = lobby;
+            await SubscribeLobbyEvents();
 
             // 연결할 곳 설정 및 Host 시작
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(data.IPv4Address, data.Port, data.AllocationIDBytes, data.Key, data.ConnectionData);
@@ -66,19 +71,33 @@ public class LobbyManager : SingletonBase<LobbyManager>
         }
         catch(System.Exception e)
         {
-            Debug.LogError(e);
+            Debug.LogError($"[Lobby] 방 생성 실패 {e.Message}");
             return false;
         }
     }
 
-    public async Task<bool> JoinRoom(string roomId)
+    public async Task<bool> JoinRoom(string roomId, string playerName)
     {
         try
         {
             // 로비 참여
-            Lobby joinRoom = await LobbyService.Instance.JoinLobbyByIdAsync(roomId);
+            var options = new JoinLobbyByIdOptions
+            {
+                Player = new Player(
+                    id: _playerId,
+                    data: new Dictionary<string, PlayerDataObject>
+                    {
+                        {
+                            "PlayerName",
+                            new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerName)
+                        }
+                    }
+                ),
+            };
+            Lobby joinRoom = await LobbyService.Instance.JoinLobbyByIdAsync(roomId, options);
             Debug.Log($"입장하는 방 Id : {roomId}");
             _currentLobby = joinRoom;
+            await SubscribeLobbyEvents();
 
             string joinCode = null;
 
@@ -136,6 +155,37 @@ public class LobbyManager : SingletonBase<LobbyManager>
         _currentLobby = null;
     }
     
+    // 방 변경 시 실행될 이벤트 구독
+    private async Task SubscribeLobbyEvents()
+    {
+        var callback = new LobbyEventCallbacks();
+
+        callback.LobbyChanged += changes =>
+        {
+            if (_currentLobby == null)
+                return;
+
+            if (changes.LobbyDeleted)
+            {
+                _currentLobby = null;
+            }
+            else
+            {
+                changes.ApplyToLobby(_currentLobby);
+            }
+            OnRoomChanged?.Invoke();
+        };
+
+        _lobbyEvents = await LobbyService.Instance.SubscribeToLobbyEventsAsync(_currentLobby.Id, callback);
+    }
+
+    // 방 나가면 이벤트 구독 해체
+    private async Task UnsubscribeLobbyEvents()
+    {
+        if (_lobbyEvents == null) return;
+        try { await _lobbyEvents.UnsubscribeAsync(); } catch { }
+        _lobbyEvents = null;
+    }
 
     public async Task<List<Lobby>> GetRoomList()
     {

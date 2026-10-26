@@ -60,7 +60,8 @@ public class LobbyView : UIBase
 
     private async void OnClickRoom(string roomId)
     {
-        if(await LobbyManager.Instance.JoinRoom(roomId))
+        string name = _nameInput.text;
+        if(await LobbyManager.Instance.JoinRoom(roomId, name))
         {
             UIManager.Instance.CloseUI(UIRootType.MainUI, UIType.LobbyView);
             UIManager.Instance.OpenUI(UIRootType.MainUI, UIType.RoomView);

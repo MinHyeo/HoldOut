@@ -15,7 +15,13 @@ public class RoomView : UIBase
         string code = LobbyManager.Instance.CurrentLobby.LobbyCode;
         _joinCodeText.text = code;
 
+        LobbyManager.Instance.OnRoomChanged += UpdatePlayerSlot;
         UpdatePlayerSlot();
+    }
+
+    private void OnDisable()
+    {
+        LobbyManager.Instance.OnRoomChanged -= UpdatePlayerSlot;
     }
 
     private void UpdatePlayerSlot()
