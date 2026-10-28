@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b65725b41f879499c149b0261d7489, type: 3}
   m_Name: Medic
   m_EditorClassIdentifier: Assembly-CSharp::JobData
-  Id: 2
+  Id: Data_Medic
   JobName: Medic
   JobIcon: {fileID: 0}
-  hp: 0
-  power: 0
-  defence: 0
+  hp: 7
+  power: 3
+  defence: 5

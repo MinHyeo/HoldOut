@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b65725b41f879499c149b0261d7489, type: 3}
   m_Name: Archer
   m_EditorClassIdentifier: Assembly-CSharp::JobData
-  Id: 1
+  Id: Data_Archer
   JobName: Archer
   JobIcon: {fileID: 0}
-  hp: 0
-  power: 0
-  defence: 0
+  hp: 5
+  power: 10
+  defence: 3
