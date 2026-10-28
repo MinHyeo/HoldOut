@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -41,5 +42,16 @@ public class GameDataManager : SingletonBase<GameDataManager>
 
         var data = dataList[id];
         return data;
+    }
+
+    public List<T> GetAllDataByLabel<T>(LabelType label) where T : GameDataBase
+    {
+        string key = label.ToString();
+        var datas = _dataList[key];
+        var dataList = datas as Dictionary<string, T>;
+        if (dataList == null)
+            return null;
+
+        return dataList.Values.ToList<T>();
     }
 }

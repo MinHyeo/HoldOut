@@ -9,5 +9,8 @@ public class PlayerSlot : UIBase
     {
         Debug.Log($"{name}");
         _nameText.text = name;
+
+        var data = GameDataManager.Instance.GetData<JobData>(LabelType.Job, "Data_Warrior");
+        _nameText.text = data.JobName;
     }
 }

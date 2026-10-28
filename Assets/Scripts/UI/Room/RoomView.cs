@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class RoomView : UIBase
 {
     [SerializeField] private TextMeshProUGUI _joinCodeText;
-
     [SerializeField] private List<PlayerSlot> _playerSlotList;
 
     private void OnEnable()

@@ -15,6 +15,8 @@ public enum UIType
 {
     LobbyView,
     RoomView,
+    CreateRoomPopup,
+    JobSelectPopup,
 }
 
 public static class UIManagerExtension
