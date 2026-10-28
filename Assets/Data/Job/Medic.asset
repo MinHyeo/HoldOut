@@ -15,6 +15,6 @@ MonoBehaviour:
   Id: 2
   JobName: Medic
   JobIcon: {fileID: 0}
-  hp: 13
-  power: 3
-  defence: 5
+  hp: 0
+  power: 0
+  defence: 0

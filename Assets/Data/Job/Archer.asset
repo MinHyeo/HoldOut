@@ -15,6 +15,6 @@ MonoBehaviour:
   Id: 1
   JobName: Archer
   JobIcon: {fileID: 0}
-  hp: 10
-  power: 7
-  defence: 3
+  hp: 0
+  power: 0
+  defence: 0

@@ -15,6 +15,6 @@ MonoBehaviour:
   Id: 0
   JobName: Warrior
   JobIcon: {fileID: 0}
-  hp: 15
-  power: 5
-  defence: 7
+  hp: 0
+  power: 0
+  defence: 0
