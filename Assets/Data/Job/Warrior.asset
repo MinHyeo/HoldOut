@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::JobData
   Id: Data_Warrior
   JobName: Warrior
-  JobIcon: {fileID: 0}
+  JobIcon: {fileID: -3085154882750227818, guid: 404463994fce3d64eb9521e017d84bdc, type: 3}
   hp: 10
   power: 5
   defence: 7

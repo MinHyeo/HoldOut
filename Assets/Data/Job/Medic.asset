@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::JobData
   Id: Data_Medic
   JobName: Medic
-  JobIcon: {fileID: 0}
+  JobIcon: {fileID: -2107635840499197786, guid: bf1a82955c6a9cd4ab0a77b602913781, type: 3}
   hp: 7
   power: 3
   defence: 5

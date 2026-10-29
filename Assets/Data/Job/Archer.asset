@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::JobData
   Id: Data_Archer
   JobName: Archer
-  JobIcon: {fileID: 0}
+  JobIcon: {fileID: 3200336923811465010, guid: b437b5c0c31676e4b90fa7cde27c63f6, type: 3}
   hp: 5
   power: 10
   defence: 3
