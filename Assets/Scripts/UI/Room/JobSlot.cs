@@ -1,10 +1,12 @@
 ﻿using TMPro;
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class JobSlot : MonoBehaviour 
 {
+    private string _jobId;
+
     [SerializeField] private Image _icon;
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private Slider _hpSlider;
@@ -12,23 +14,31 @@ public class JobSlot : MonoBehaviour
     [SerializeField] private Slider _defSlider;
     [SerializeField] private UIButton _button;
 
+    public event Action<string> OnClickJobButton;
+
     private void OnEnable()
     {
-        
+        _button.BindOnClickButtonEvent(OnClickButton);
     }
 
     private void OnDisable()
     {
-        
+        _button.UnBindOnClickButtonEvent(OnClickButton);
     }
 
     public void UpdateSlot(JobData jobData)
     {
+        _jobId = jobData.Id;
         _icon.sprite = jobData.JobIcon;
         _nameText.text = jobData.name;
 
         _hpSlider.value = jobData.hp / 10f;
         _atkSlider.value = jobData.power / 10f;
         _defSlider.value = jobData.defence / 10f;
+    }
+
+    private void OnClickButton()
+    {
+        OnClickJobButton?.Invoke(_jobId);
     }
 }

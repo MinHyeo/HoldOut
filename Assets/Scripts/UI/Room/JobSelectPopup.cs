@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class JobSelectPopup : UIBase
@@ -7,6 +8,8 @@ public class JobSelectPopup : UIBase
 
     [SerializeField] private GameObject _jobSlotPerfab;
     [SerializeField] private Transform _content;
+
+    public event Action<string> OnJobSelected;
 
     private void Start()
     {
@@ -24,6 +27,12 @@ public class JobSelectPopup : UIBase
             slot.UpdateSlot(data);
 
             _jobSlotList.Add(data.Id, slot);
+            slot.OnClickJobButton += SelectJob;
         }
+    }
+
+    private void SelectJob(string id)
+    {
+        OnJobSelected?.Invoke(id);
     }
 }

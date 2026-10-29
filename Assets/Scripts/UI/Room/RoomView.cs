@@ -9,6 +9,8 @@ public class RoomView : UIBase
     [SerializeField] private TextMeshProUGUI _joinCodeText;
     [SerializeField] private List<PlayerSlot> _playerSlotList;
 
+    [SerializeField] private UIButton _selectJobButton;
+
     private void OnEnable()
     {
         string code = LobbyManager.Instance.CurrentLobby.LobbyCode;
@@ -16,11 +18,15 @@ public class RoomView : UIBase
 
         LobbyManager.Instance.OnRoomChanged += UpdatePlayerSlot;
         UpdatePlayerSlot();
+
+        _selectJobButton.BindOnClickButtonEvent(OpenSelectJobPopup);
     }
 
     private void OnDisable()
     {
         LobbyManager.Instance.OnRoomChanged -= UpdatePlayerSlot;
+
+        _selectJobButton.UnBindOnClickButtonEvent(OpenSelectJobPopup);
     }
 
     private void UpdatePlayerSlot()
@@ -46,5 +52,22 @@ public class RoomView : UIBase
             }
             _playerSlotList[i].SetPlayerName(name);
         }
+    }
+
+    private void OpenSelectJobPopup()
+    {
+        var uiBase = UIManager.Instance.OpenUI(UIRootType.PopupUI, UIType.JobSelectPopup);
+        if(uiBase is JobSelectPopup selectPopup)
+        {
+            selectPopup.OnJobSelected += UpdatePlayerSlotToSelectJob;
+        }
+    }
+
+    private void UpdatePlayerSlotToSelectJob(string id)
+    {
+        var data = GameDataManager.Instance.GetData<JobData>(LabelType.Job, id);
+        _playerSlotList[0].SetJobIcon(data.JobIcon);
+
+        UIManager.Instance.CloseUI(UIRootType.PopupUI, UIType.JobSelectPopup);
     }
 }
