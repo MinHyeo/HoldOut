@@ -14,7 +14,7 @@ public class JobSlot : MonoBehaviour
     [SerializeField] private Slider _defSlider;
     [SerializeField] private UIButton _button;
 
-    public event Action<string> OnClickJobButton;
+    public event Action OnClickJobButton;
 
     private void OnEnable()
     {
@@ -39,6 +39,10 @@ public class JobSlot : MonoBehaviour
 
     private void OnClickButton()
     {
-        OnClickJobButton?.Invoke(_jobId);
+        var matchState = GameManager.Instance.MatchState;
+        matchState.RequestSelectJob(_jobId);
+
+        UIManager.Instance.CloseUI(UIRootType.PopupUI, UIType.JobSelectPopup);
+        //OnClickJobButton?.Invoke();
     }
 }

@@ -9,11 +9,16 @@ public class JobSelectPopup : UIBase
     [SerializeField] private GameObject _jobSlotPerfab;
     [SerializeField] private Transform _content;
 
-    public event Action<string> OnJobSelected;
+    public event Action OnJobSelected;
 
     private void Start()
     {
         UpdateJobSlots();
+    }
+
+    private void OnDisable()
+    {
+        OnJobSelected = null;
     }
 
     private void UpdateJobSlots()
@@ -31,8 +36,8 @@ public class JobSelectPopup : UIBase
         }
     }
 
-    private void SelectJob(string id)
+    private void SelectJob()
     {
-        OnJobSelected?.Invoke(id);
+        OnJobSelected?.Invoke();
     }
 }

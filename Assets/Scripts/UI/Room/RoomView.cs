@@ -3,9 +3,12 @@ using Unity.Services.Lobbies.Models;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Netcode;
 
 public class RoomView : UIBase
 {
+    private MatchState _matchState;
+
     [SerializeField] private TextMeshProUGUI _joinCodeText;
     [SerializeField] private List<PlayerSlot> _playerSlotList;
 
@@ -13,44 +16,43 @@ public class RoomView : UIBase
 
     private void OnEnable()
     {
+        _matchState = GameManager.Instance.MatchState;
+        _matchState.OnPlayerChanged += UpdatePlayerSlot;
+
         string code = LobbyManager.Instance.CurrentLobby.LobbyCode;
         _joinCodeText.text = code;
+
+        _selectJobButton.BindOnClickButtonEvent(OpenSelectJobPopup);
 
         LobbyManager.Instance.OnRoomChanged += UpdatePlayerSlot;
         UpdatePlayerSlot();
 
-        _selectJobButton.BindOnClickButtonEvent(OpenSelectJobPopup);
+        
     }
 
     private void OnDisable()
     {
         LobbyManager.Instance.OnRoomChanged -= UpdatePlayerSlot;
+        _matchState.OnPlayerChanged -= UpdatePlayerSlot;
 
         _selectJobButton.UnBindOnClickButtonEvent(OpenSelectJobPopup);
     }
 
     private void UpdatePlayerSlot()
     {
-        List<Player> players = LobbyManager.Instance.CurrentLobby.Players;
+        List<RoomPlayerState> players = _matchState.GetPlayers();
+        ulong localId = NetworkManager.Singleton.LocalClientId;
 
         for(int i = 0; i < _playerSlotList.Count; i++)
         {
-            string name = string.Empty;
-            if (i < players.Count)
+            if(i < players.Count)
             {
                 var player = players[i];
-                PlayerDataObject nameData = null;              
+                _playerSlotList[i].SetPlayerName(player.PlayerName.ToString());
 
-                if (player.Data != null && player.Data.TryGetValue("PlayerName", out nameData))
-                {
-                    name = nameData.Value;
-                }
-                else
-                {
-                    name = "Empty";
-                }
+                var data = GameDataManager.Instance.GetData<JobData>(LabelType.Job, player.JobId.ToString());
+                _playerSlotList[i].SetJobIcon(data.JobIcon);
             }
-            _playerSlotList[i].SetPlayerName(name);
         }
     }
 
@@ -59,15 +61,7 @@ public class RoomView : UIBase
         var uiBase = UIManager.Instance.OpenUI(UIRootType.PopupUI, UIType.JobSelectPopup);
         if(uiBase is JobSelectPopup selectPopup)
         {
-            selectPopup.OnJobSelected += UpdatePlayerSlotToSelectJob;
+            selectPopup.OnJobSelected += UpdatePlayerSlot;
         }
-    }
-
-    private void UpdatePlayerSlotToSelectJob(string id)
-    {
-        var data = GameDataManager.Instance.GetData<JobData>(LabelType.Job, id);
-        _playerSlotList[0].SetJobIcon(data.JobIcon);
-
-        UIManager.Instance.CloseUI(UIRootType.PopupUI, UIType.JobSelectPopup);
     }
 }
