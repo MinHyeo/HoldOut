@@ -27,6 +27,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Job
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 72df105b3400b614db9f72904fc3b0e9
+    m_Address: Assets/Data/Job/Random.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Job
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9ab6160651e4b924fa0af13c89302739
     m_Address: Assets/Data/Job/Medic.asset
     m_ReadOnly: 0
