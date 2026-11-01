@@ -13,6 +13,8 @@ public enum GamePhase : byte
 
 public class MatchState : NetworkBehaviour
 {
+    private const string _defalutJobId = "Job_Random";
+
     private NetworkVariable<GamePhase> _phase { get; } = new(GamePhase.Room);
     private NetworkList<RoomPlayerState> _players;
 
@@ -78,6 +80,9 @@ public class MatchState : NetworkBehaviour
 
     public bool IsJobTaken(ulong currentClientId, string jobId)
     {
+        if (jobId == _defalutJobId)
+            return false;
+
         foreach(var player in _players)
         {
             if(player.ClientId != currentClientId && player.JobId == jobId)
@@ -115,7 +120,7 @@ public class MatchState : NetworkBehaviour
         {
             ClientId = sender,
             PlayerName = playerName,
-            JobId = string.Empty
+            JobId = _defalutJobId
         });
     }
 
