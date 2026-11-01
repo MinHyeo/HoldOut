@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unity.Netcode;
@@ -18,12 +19,14 @@ public class LobbyManager : SingletonBase<LobbyManager>
     private const string _environment = "projuction";
     private const string _joinCodeKey = "JoinCode";
     private const string _playerNameKey = "PlaayerName";
+    private const float _heartbeatInterval = 20;
 
     // 상태
     private string _playerId => AuthenticationService.Instance.PlayerId;
     private Lobby _currentLobby;
     private ILobbyEvents _lobbyEvents;
     private bool _isBusy;
+    private Coroutine _heartbeat;
 
     public Lobby CurrentLobby => _currentLobby;
     public string LocalPlayerName { get; private set; }
@@ -83,6 +86,7 @@ public class LobbyManager : SingletonBase<LobbyManager>
             NetworkManager.Singleton.StartHost();
 
             // 방 유지(HeartBeat)
+            StartHeartbeat();
 
             Debug.Log("방 생성");
             return true;
@@ -234,6 +238,31 @@ public class LobbyManager : SingletonBase<LobbyManager>
         {
             Debug.LogError($"[Lobby] 방 목록 조회 실패 : {e.Message}");
             return new List<Lobby>();
+        }
+    }
+
+    // Heartbeat
+    private void StartHeartbeat()
+    {
+        StopHeartbeat();
+        _heartbeat = StartCoroutine(HeartbeatRoutine(_currentLobby.Id));
+    }
+
+    private void StopHeartbeat()
+    {
+        if (_heartbeat == null)
+            return;
+        StopCoroutine(_heartbeat);
+        _heartbeat = null;
+    }
+
+    private IEnumerator HeartbeatRoutine(string lobbyId)
+    {
+        var wait = new WaitForSeconds(_heartbeatInterval);
+        while (true)
+        {
+            LobbyService.Instance.SendHeartbeatPingAsync(lobbyId);
+            yield return wait;
         }
     }
 }
