@@ -45,7 +45,7 @@ public class RelayManager : SingletonBase<RelayManager>
         }
 
         // 방 생성
-        Allocation allocation = await Unity.Services.Relay.RelayService.Instance.CreateAllocationAsync(maxConn - 1);
+        Allocation allocation = await Unity.Services.Relay.RelayService.Instance.CreateAllocationAsync(maxConn);
 
         // 방 데이터 기록
         RelayHostData data = new RelayHostData
