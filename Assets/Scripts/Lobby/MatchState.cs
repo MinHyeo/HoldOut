@@ -99,6 +99,14 @@ public class MatchState : NetworkBehaviour
         SelectJobRpc(jobId);
     }
 
+    public void RequestStartGame()
+    {
+        if (IsServer == false)
+            return;
+
+        _phase.Value = GamePhase.InGame;
+    }
+
     // 서버
 
     // RPC
