@@ -25,6 +25,7 @@ public class GameDataManager : SingletonBase<GameDataManager>
         }
 
         _dataList[key] = dataList;
+        Debug.Log($"{key} 데이터를 불러왔습니다");
     }
 
     public T GetData<T>(LabelType label, string id) where T : GameDataBase
@@ -40,7 +41,11 @@ public class GameDataManager : SingletonBase<GameDataManager>
         if (dataList == null)
             return null;
 
-        var data = dataList[id];
+        T data = null; 
+        if (dataList.TryGetValue(id, out data) == false)
+        {
+            Debug.LogWarning("데이터가 없습니다");
+        }
         return data;
     }
 
