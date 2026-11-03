@@ -9,7 +9,7 @@ public class GameDataManager : SingletonBase<GameDataManager>
 
     private void Start()
     {
-        LoadData<JobData>(LabelType.Job);
+        LoadData<JobData>(LabelType.Data);
     }
 
     public async void LoadData<T>(LabelType label) where T : GameDataBase
