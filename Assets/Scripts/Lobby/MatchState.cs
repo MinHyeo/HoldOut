@@ -15,7 +15,7 @@ public class MatchState : NetworkBehaviour
 {
     private const string _defalutJobId = "Job_Random";
 
-    private NetworkVariable<GamePhase> _phase { get; } = new(GamePhase.Room);
+    public NetworkVariable<GamePhase> Phase { get; } = new(GamePhase.Room);
     private NetworkList<RoomPlayerState> _players;
 
     public event Action OnPlayerChanged;
@@ -33,7 +33,7 @@ public class MatchState : NetworkBehaviour
         if (IsServer)
         {
             _players.Clear();
-            _phase.Value = GamePhase.Room;
+            Phase.Value = GamePhase.Room;
 
             NetworkManager.OnClientDisconnectCallback += HandleClientDisconnected;
         }
@@ -104,7 +104,7 @@ public class MatchState : NetworkBehaviour
         if (IsServer == false)
             return;
 
-        _phase.Value = GamePhase.InGame;
+        Phase.Value = GamePhase.InGame;
     }
 
     // 서버
@@ -118,7 +118,7 @@ public class MatchState : NetworkBehaviour
         if (IndexOf(sender) >= 0)
             return;
 
-        if (_phase.Value != GamePhase.Room)
+        if (Phase.Value != GamePhase.Room)
         {
             NetworkManager.DisconnectClient(sender, "지금은 입장할 수 없습니다.");
             return;
@@ -135,7 +135,7 @@ public class MatchState : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void SelectJobRpc(string jobId, RpcParams rpcParams = default)
     {
-        if (_phase.Value != GamePhase.Room)
+        if (Phase.Value != GamePhase.Room)
             return;
 
         ulong sender = rpcParams.Receive.SenderClientId;

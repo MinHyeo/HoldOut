@@ -13,6 +13,7 @@ public class RoomView : UIBase
     [SerializeField] private List<PlayerSlot> _playerSlotList;
 
     [SerializeField] private UIButton _selectJobButton;
+    [SerializeField] private UIButton _startButton;
 
     private void OnEnable()
     {
@@ -23,6 +24,7 @@ public class RoomView : UIBase
         _joinCodeText.text = code;
 
         _selectJobButton.BindOnClickButtonEvent(OpenSelectJobPopup);
+        _startButton.BindOnClickButtonEvent(StartGame);
 
         LobbyManager.Instance.OnRoomChanged += UpdatePlayerSlot;
         UpdatePlayerSlot();
@@ -36,6 +38,7 @@ public class RoomView : UIBase
         _matchState.OnPlayerChanged -= UpdatePlayerSlot;
 
         _selectJobButton.UnBindOnClickButtonEvent(OpenSelectJobPopup);
+        _startButton.UnBindOnClickButtonEvent(StartGame);
     }
 
     private void UpdatePlayerSlot()
@@ -50,7 +53,7 @@ public class RoomView : UIBase
                 var player = players[i];
                 _playerSlotList[i].SetPlayerName(player.PlayerName.ToString());
 
-                var data = GameDataManager.Instance.GetData<JobData>(LabelType.Job, player.JobId.ToString());
+                var data = GameDataManager.Instance.GetData<JobData>(LabelType.Data, player.JobId.ToString());
                 _playerSlotList[i].SetJobIcon(data.JobIcon);
             }
         }
@@ -63,5 +66,10 @@ public class RoomView : UIBase
         {
             selectPopup.OnJobSelected += UpdatePlayerSlot;
         }
+    }
+
+    private void StartGame()
+    {
+        _matchState.RequestStartGame();
     }
 }
