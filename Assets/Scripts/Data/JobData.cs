@@ -5,6 +5,7 @@ public class JobData : GameDataBase
 {
     public string JobName;
     public Sprite JobIcon;
+    public AnimatorOverrideController AnimatorController;
     public int hp;
     public int power;
     public int defence;

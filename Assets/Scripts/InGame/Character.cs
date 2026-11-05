@@ -10,10 +10,12 @@ public class Character : NetworkBehaviour
     private JobData _jobData;
 
     private SpriteRenderer _sprite;
+    private Animator _anim;
 
     private void Awake()
     {
         _sprite = GetComponentInChildren<SpriteRenderer>();
+        _anim = GetComponentInChildren<Animator>();
     }
 
     public override void OnNetworkSpawn()
@@ -38,6 +40,7 @@ public class Character : NetworkBehaviour
         if (_jobData == null)
             return;
 
-        _sprite.sprite = _jobData.JobIcon;
+        _anim.runtimeAnimatorController = _jobData.AnimatorController;
+        //_sprite.sprite = _jobData.JobIcon;
     }
 }
