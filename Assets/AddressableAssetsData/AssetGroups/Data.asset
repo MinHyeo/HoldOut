@@ -10,34 +10,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Job
+  m_Name: Data
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
-  m_GroupName: Job
+  m_GroupName: Data
   m_GUID: 13567895f245c5c419ea3b7939be9f8b
   m_SerializeEntries:
   - m_GUID: 204eb218ddc037a4996a34e7236c4d47
-    m_Address: Assets/Data/Job/Warrior.asset
+    m_Address: Data/Job/Warrior
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Job
+    - Data
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2944896bb571b574fb60a62e70c1f5e5
-    m_Address: Assets/Data/Job/Archer.asset
+    m_Address: Data/Job/Archer
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Job
+    - Data
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 72df105b3400b614db9f72904fc3b0e9
-    m_Address: Assets/Data/Job/Random.asset
+    m_Address: Data/Job/Random
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Job
+    - Data
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9ab6160651e4b924fa0af13c89302739
-    m_Address: Assets/Data/Job/Medic.asset
+    m_Address: Data/Job/Medic
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Job
+    - Data
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cb45fb1da2b576d4c95b4cce8a4115ba
+    m_Address: Data/Job/Ability/Warrior/01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Data
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 072b8a0c18c09eb438ac9139155c5460, type: 2}

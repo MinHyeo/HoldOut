@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5d17a21594effb4e9591490b009e7aa, type: 3}
-  m_Name: Job_BundledAssetGroupSchema
+  m_Name: Data_BundledAssetGroupSchema
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.GroupSchemas.BundledAssetGroupSchema
   m_Group: {fileID: 11400000, guid: 262fe48705a33d8419e8dff3b11ebf29, type: 2}
   m_InternalBundleIdMode: 1

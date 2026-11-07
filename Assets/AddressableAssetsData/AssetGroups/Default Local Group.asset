@@ -14,7 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: Default Local Group
   m_GUID: d3fd1ba7064de5e45b38bc262dc7c19a
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 6970188d70b0b5a4fba6e50c7e09e002
+    m_Address: Effect/WarriorSword
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf06b5fa12bdf6c45a0a98e1705e1129
+    m_Address: Character
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 072b8a0c18c09eb438ac9139155c5460, type: 2}
   m_SchemaSet:
