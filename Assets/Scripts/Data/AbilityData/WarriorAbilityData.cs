@@ -4,6 +4,7 @@
 public class WarriorData : AbilityData
 {
     public float halfAngle = 60f;   // 부채꼴 반각
+    public string effectPath;
 
     public override Ability CreateAbility(CharacterCombat owner)
     {

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ca040fc8850ae488bf8e1ee0ce5668, type: 3}
   m_Name: WarriorAbility01
   m_EditorClassIdentifier: Assembly-CSharp::WarriorData
-  Id: Job_Ability_Warrior_01
+  Id: Data/Job/Ability/Warrior/01
   Cooldown: 1
   damage: 10
   range: 3
-  halfAngle: 60
+  halfAngle: 40
+  effectPath: Effect/WarriorSword

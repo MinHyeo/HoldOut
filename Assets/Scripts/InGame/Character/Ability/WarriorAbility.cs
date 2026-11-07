@@ -13,8 +13,6 @@ public class WarriorAbility : Ability
 
     protected override bool TryActivate()
     {
-        Debug.Log("공격 시도");
-
         Vector2 origin = Owner.transform.position;
         Monster target = TargetFinder.FindNearest(origin, _data.range);
         if (target == null)
@@ -25,11 +23,11 @@ public class WarriorAbility : Ability
         foreach (Monster monster in _targets)
         {
             Vector2 to = (Vector2)monster.transform.position - origin;
-            //if (Vector2.Angle(dir, to) <= _data.halfAngle)
-                //monster.TakeDamage(_data.damage);
+            if (Vector2.Angle(dir, to) <= _data.halfAngle)
+                monster.TakeDamage(_data.damage);
         }
 
-        Owner.PlayWarriorClientRpc(dir);
+        Owner.PlayWarriorClientRpc(dir, _data.Id);
         return true;
     }
 }

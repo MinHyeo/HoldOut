@@ -35,9 +35,21 @@ public class CharacterCombat : NetworkBehaviour
     }
 
     [Rpc(SendTo.ClientsAndHost)]
-    public void PlayWarriorClientRpc(Vector2 dir)
+    public void PlayWarriorClientRpc(Vector2 dir, string abilityId)
     {
         Debug.Log($"공격! {dir.x}, {dir.y}");
+        var data = GameDataManager.Instance.GetData<AbilityData>(abilityId);
+        var warriorData = (WarriorData)data;
+
+        Vector3 spawnPosition = new Vector3(dir.x, dir.y, 0);
+        GameObject effect = GameObjectManager.Instance.CreateObject(warriorData.effectPath, Vector3.zero);
+        effect.transform.SetParent(transform);
+        effect.transform.localPosition = spawnPosition;
+
+        if(effect.TryGetComponent(out WarriorEffect warrior))
+        {
+            warrior.Play(dir, warriorData.halfAngle, 0.5f);
+        }
     }
 
     private void OnDrawGizmosSelected()
