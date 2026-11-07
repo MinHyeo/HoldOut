@@ -16,6 +16,8 @@ MonoBehaviour:
   JobName: Warrior
   JobIcon: {fileID: -3085154882750227818, guid: 404463994fce3d64eb9521e017d84bdc, type: 3}
   AnimatorController: {fileID: 22100000, guid: 278848b93efc0444dbd524bdf30829d2, type: 2}
-  hp: 10
-  power: 5
-  defence: 7
+  Hp: 10
+  Power: 5
+  Defence: 7
+  AbilityDatas:
+  - {fileID: 11400000, guid: cb45fb1da2b576d4c95b4cce8a4115ba, type: 2}

@@ -125,11 +125,12 @@ GameObject:
   - component: {fileID: 1967557047351070349}
   - component: {fileID: 4396271784262333573}
   - component: {fileID: 5302359188788539861}
-  - component: {fileID: 7907434838838674329}
   - component: {fileID: 841407888414178911}
   - component: {fileID: 6927792596790186590}
   - component: {fileID: 5002740430799043936}
   - component: {fileID: 8269798048570856458}
+  - component: {fileID: 6253240827777809843}
+  - component: {fileID: 8585405267052549405}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -189,7 +190,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6067676844487472574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9698e6629719c543b10ba2f75b91ba4, type: 3}
+  m_Script: {fileID: 11500000, guid: 54e90793b69cc974d9187f65afa23754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
   ShowTopMostFoldoutHeaderGroup: 1
@@ -265,19 +266,6 @@ MonoBehaviour:
         byte0059: 0
         byte0060: 0
         byte0061: 0
---- !u!114 &7907434838838674329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6067676844487472574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b934fdcdb3cb5442ad7d0d4c3878c20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterMovement
-  ShowTopMostFoldoutHeaderGroup: 1
 --- !u!50 &841407888414178911
 Rigidbody2D:
   serializedVersion: 5
@@ -390,6 +378,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 6067676844487472574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f5f778d87dabda40bfd3192c34849e1, type: 3}
+  m_Script: {fileID: 11500000, guid: e071e670db9c985459dec84f964de12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimation
+--- !u!114 &6253240827777809843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6067676844487472574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfea93dd035f0e349a3277d7f00bb4f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterCombat
+  ShowTopMostFoldoutHeaderGroup: 1
+--- !u!114 &8585405267052549405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6067676844487472574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84c4d67ca9656dc4c855803ad0979e81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterMovement
+  ShowTopMostFoldoutHeaderGroup: 1

@@ -8,14 +8,13 @@ public class Character : NetworkBehaviour
     public NetworkVariable<FixedString64Bytes> JobId = new NetworkVariable<FixedString64Bytes>("Job_Random");
 
     private JobData _jobData;
-
-    private SpriteRenderer _sprite;
     private Animator _anim;
+    private CharacterCombat _combat;
 
     private void Awake()
     {
-        _sprite = GetComponentInChildren<SpriteRenderer>();
         _anim = GetComponentInChildren<Animator>();
+        _combat = GetComponentInChildren<CharacterCombat>();
     }
 
     public override void OnNetworkSpawn()
@@ -41,6 +40,6 @@ public class Character : NetworkBehaviour
             return;
 
         _anim.runtimeAnimatorController = _jobData.AnimatorController;
-        //_sprite.sprite = _jobData.JobIcon;
+        _combat.InitAbilities(_jobData);
     }
 }

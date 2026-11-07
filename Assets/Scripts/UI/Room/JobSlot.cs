@@ -32,9 +32,9 @@ public class JobSlot : MonoBehaviour
         _icon.sprite = jobData.JobIcon;
         _nameText.text = jobData.name;
 
-        _hpSlider.value = jobData.hp / 10f;
-        _atkSlider.value = jobData.power / 10f;
-        _defSlider.value = jobData.defence / 10f;
+        _hpSlider.value = jobData.Hp / 10f;
+        _atkSlider.value = jobData.Power / 10f;
+        _defSlider.value = jobData.Defence / 10f;
     }
 
     private void OnClickButton()
