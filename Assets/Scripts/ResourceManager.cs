@@ -58,16 +58,17 @@ public class ResourceManager : SingletonBase<ResourceManager>
         return handle.Result as T;
     }
 
-    public async Task<IList<T>> LoadAllAsync<T>(LabelType label)
+    public async Task<IList<T>> LoadAllDataAsync<T>()
     {
-        string address = label.ToString();
-        if(_handles.TryGetValue(address, out var cached))
+        string address = "Data";
+        string key = typeof(T).Name;
+        if(_handles.TryGetValue(key, out var cached))
         {
             return cached.Result as IList<T>;
         }
 
         var handle = Addressables.LoadAssetsAsync<T>(address);
-        _handles[address] = handle;
+        _handles[key] = handle;
         await handle.Task;
         return handle.Result;
     }

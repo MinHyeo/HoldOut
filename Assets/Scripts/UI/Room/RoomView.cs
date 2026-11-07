@@ -53,7 +53,7 @@ public class RoomView : UIBase
                 var player = players[i];
                 _playerSlotList[i].SetPlayerName(player.PlayerName.ToString());
 
-                var data = GameDataManager.Instance.GetData<JobData>(LabelType.Data, player.JobId.ToString());
+                var data = GameDataManager.Instance.GetData<JobData>(player.JobId.ToString());
                 _playerSlotList[i].SetJobIcon(data.JobIcon);
             }
         }

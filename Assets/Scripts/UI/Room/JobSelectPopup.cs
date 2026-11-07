@@ -23,7 +23,7 @@ public class JobSelectPopup : UIBase
 
     private void UpdateJobSlots()
     {
-        var datas = GameDataManager.Instance.GetAllDataByLabel<JobData>(LabelType.Data);
+        var datas = GameDataManager.Instance.GetAllDataByType<JobData>();
 
         foreach(var data in datas)
         {

@@ -45,7 +45,7 @@ public class CharacterSpawner : MonoBehaviour
         for(int i = 0; i < players.Count; i++)
         {
             var player = players[i];
-            var instance = GameObjectManager.Instance.CreateObject("Assets/Prefabs/Character/Character.prefab", Vector3.zero).GetComponent<NetworkObject>();
+            var instance = GameObjectManager.Instance.CreateObject("Character", Vector3.zero).GetComponent<NetworkObject>();
 
             var character = instance.GetComponent<Character>();
             if (character == null)

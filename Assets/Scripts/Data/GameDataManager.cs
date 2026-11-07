@@ -9,13 +9,14 @@ public class GameDataManager : SingletonBase<GameDataManager>
 
     private void Start()
     {
-        LoadData<JobData>(LabelType.Data);
+        LoadData<JobData>();
+        LoadData<AbilityData>();
     }
 
-    public async void LoadData<T>(LabelType label) where T : GameDataBase
+    public async void LoadData<T>() where T : GameDataBase
     {
-        string key = label.ToString();
-        var datas = await ResourceManager.Instance.LoadAllAsync<T>(label);
+        string key = typeof(T).Name;
+        var datas = await ResourceManager.Instance.LoadAllDataAsync<T>();
         _dataList.Add(key, new Dictionary<string, T>());
 
         Dictionary<string, T> dataList = new Dictionary<string, T>();
@@ -28,12 +29,11 @@ public class GameDataManager : SingletonBase<GameDataManager>
         Debug.Log($"{key} 데이터를 불러왔습니다");
     }
 
-    public T GetData<T>(LabelType label, string id) where T : GameDataBase
+    public T GetData<T>(string id) where T : GameDataBase
     {
-        string key = label.ToString();
+        string key = typeof(T).Name;
         if(_dataList.TryGetValue(key, out var datas) == false)
         {
-            //LoadData<T>(label);
             datas = _dataList[key];
         }
 
@@ -49,9 +49,9 @@ public class GameDataManager : SingletonBase<GameDataManager>
         return data;
     }
 
-    public List<T> GetAllDataByLabel<T>(LabelType label) where T : GameDataBase
+    public List<T> GetAllDataByType<T>() where T : GameDataBase
     {
-        string key = label.ToString();
+        string key = typeof(T).Name;
         var datas = _dataList[key];
         var dataList = datas as Dictionary<string, T>;
         if (dataList == null)

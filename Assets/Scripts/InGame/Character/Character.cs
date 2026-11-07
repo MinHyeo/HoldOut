@@ -35,7 +35,7 @@ public class Character : NetworkBehaviour
 
     private void ApplyJob(string jobId)
     {
-        _jobData = GameDataManager.Instance.GetData<JobData>(LabelType.Data, jobId);
+        _jobData = GameDataManager.Instance.GetData<JobData>(jobId);
         if (_jobData == null)
             return;
 
