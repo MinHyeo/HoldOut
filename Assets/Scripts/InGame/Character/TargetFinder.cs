@@ -5,6 +5,7 @@ using UnityEngine;
 public static class TargetFinder
 {
     private static readonly List<Collider2D> _hits = new(128);
+    private static readonly List<RaycastHit2D> _castHits = new(32);
     private static readonly int MonsterMask = LayerMask.GetMask("Monster");
     private static ContactFilter2D _filter;
     private static bool _initialized = false;
@@ -54,6 +55,20 @@ public static class TargetFinder
         foreach (Collider2D hit in _hits)
         {
             if (hit.TryGetComponent(out Monster monster))
+                targets.Add(monster);
+        }
+    }
+
+    public static void FindAlongPath(Vector2 origin, Vector2 direction, float distance, float radius, List<Monster> targets)
+    {
+        EnsureInitialized();
+        targets.Clear();
+
+        Physics2D.CircleCast(origin, radius, direction, _filter, _castHits, distance);
+
+        foreach (RaycastHit2D hit in _castHits)
+        {
+            if (hit.collider.TryGetComponent(out Monster monster))
                 targets.Add(monster);
         }
     }

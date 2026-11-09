@@ -16,6 +16,8 @@ MonoBehaviour:
   JobName: Archer
   JobIcon: {fileID: 3200336923811465010, guid: b437b5c0c31676e4b90fa7cde27c63f6, type: 3}
   AnimatorController: {fileID: 22100000, guid: 787ebc11b33f4b44a80a210a72ab7808, type: 2}
-  hp: 5
-  power: 10
-  defence: 3
+  Hp: 0
+  Power: 0
+  Defence: 0
+  AbilityDatas:
+  - {fileID: 11400000, guid: 5eb214193ffc2c44cb919e7ce45fe07e, type: 2}

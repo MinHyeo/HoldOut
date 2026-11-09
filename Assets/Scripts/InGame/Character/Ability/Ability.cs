@@ -23,4 +23,6 @@
     }
 
     protected abstract bool TryActivate();
+
+    public abstract void OnUpdate(float deltaTime);
 }

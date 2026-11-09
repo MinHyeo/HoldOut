@@ -30,4 +30,9 @@ public class WarriorAbility : Ability
         Owner.PlayWarriorClientRpc(dir, _data.Id);
         return true;
     }
+
+    public override void OnUpdate(float deltaTime)
+    {
+        
+    }
 }

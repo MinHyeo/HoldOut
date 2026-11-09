@@ -6,6 +6,8 @@ public class CharacterCombat : NetworkBehaviour
 {
     private readonly List<Ability> _abilities = new();
 
+    private readonly Dictionary<int, ArrowEffect> _arrowEffects = new();
+
     public void InitAbilities(JobData data)
     {
         if (IsServer == false)
@@ -31,6 +33,7 @@ public class CharacterCombat : NetworkBehaviour
         foreach(var ability in _abilities)
         {
             ability.Tick(Time.deltaTime);
+            ability.OnUpdate(Time.deltaTime);
         }
     }
 
@@ -49,6 +52,34 @@ public class CharacterCombat : NetworkBehaviour
         if(effect.TryGetComponent(out WarriorEffect warrior))
         {
             warrior.Play(dir, warriorData.halfAngle, 0.5f);
+        }
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    public void PlayArrowClientRpc(int arrowId, Vector2 origin, Vector2 direction, float speed, float lifeTime, string effectPath)
+    {
+        GameObject obj = GameObjectManager.Instance.CreateObject(effectPath, origin);
+        if (obj == null || !obj.TryGetComponent(out ArrowEffect arrow))
+            return;
+
+        // 화살 회전
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        obj.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
+        // id로 기억해두기
+        _arrowEffects[arrowId] = arrow;
+
+        // 받은 방향·속도·수명으로 날리기. 끝나면 목록에서 제거
+        arrow.Play(direction, speed, lifeTime, () => _arrowEffects.Remove(arrowId));
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    public void ArrowHitClientRpc(int arrowId)
+    {
+        // 서버에서 맞았다고 알려주면 그 화살 그림을 바로 사라지게
+        if (_arrowEffects.TryGetValue(arrowId, out ArrowEffect arrow))
+        {
+            arrow.Finish();
         }
     }
 
