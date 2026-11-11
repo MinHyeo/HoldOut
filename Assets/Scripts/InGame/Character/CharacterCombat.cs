@@ -6,7 +6,7 @@ public class CharacterCombat : NetworkBehaviour
 {
     private readonly List<Ability> _abilities = new();
 
-    private readonly Dictionary<int, ArrowEffect> _arrowEffects = new();
+    private readonly Dictionary<int, ProjectileEffect> _projectileEffects = new();
 
     public void InitAbilities(JobData data)
     {
@@ -56,10 +56,10 @@ public class CharacterCombat : NetworkBehaviour
     }
 
     [Rpc(SendTo.ClientsAndHost)]
-    public void PlayArrowClientRpc(int arrowId, Vector2 origin, Vector2 direction, float speed, float lifeTime, string effectPath)
+    public void PlayProjectileClientRpc(int arrowId, Vector2 origin, Vector2 direction, float speed, float lifeTime, string effectPath)
     {
         GameObject obj = GameObjectManager.Instance.CreateObject(effectPath, origin);
-        if (obj == null || !obj.TryGetComponent(out ArrowEffect arrow))
+        if (obj == null || obj.TryGetComponent(out ProjectileEffect projectile) == false)
             return;
 
         // 화살 회전
@@ -67,21 +67,33 @@ public class CharacterCombat : NetworkBehaviour
         obj.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
         // id로 기억해두기
-        _arrowEffects[arrowId] = arrow;
+        _projectileEffects[arrowId] = projectile;
 
         // 받은 방향·속도·수명으로 날리기. 끝나면 목록에서 제거
-        arrow.Play(direction, speed, lifeTime, () => _arrowEffects.Remove(arrowId));
+        projectile.Play(direction, speed, lifeTime, () => _projectileEffects.Remove(arrowId));
     }
 
     [Rpc(SendTo.ClientsAndHost)]
-    public void ArrowHitClientRpc(int arrowId)
+    public void ProjectileHitClientRpc(int arrowId)
     {
         // 서버에서 맞았다고 알려주면 그 화살 그림을 바로 사라지게
-        if (_arrowEffects.TryGetValue(arrowId, out ArrowEffect arrow))
+        if (_projectileEffects.TryGetValue(arrowId, out ProjectileEffect arrow))
         {
             arrow.Finish();
         }
     }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    public void ExplodeClientRpc(int id, Vector2 center, float radius, string explosionEffectPath)
+    {
+        if (_projectileEffects.TryGetValue(id, out ProjectileEffect projectile))
+            projectile.Finish();
+
+        GameObject obj = GameObjectManager.Instance.CreateObject(explosionEffectPath, center);
+        if (obj != null && obj.TryGetComponent(out ExplosionEffect explosion))
+            explosion.Play(radius);
+    }
+
 
     private void OnDrawGizmosSelected()
     {

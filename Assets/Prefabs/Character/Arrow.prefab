@@ -147,7 +147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5320406120741801142}
-  - component: {fileID: 4269366257363969083}
+  - component: {fileID: 6712464218688075478}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -171,7 +171,7 @@ Transform:
   - {fileID: 3284136483061560579}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4269366257363969083
+--- !u!114 &6712464218688075478
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,6 +180,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2690577492845485898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39a4d6474f5cfa146b6cbb02c479a387, type: 3}
+  m_Script: {fileID: 11500000, guid: 02c9999e4f98c0c4db0b568769184a76, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ArrowEffect
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileEffect

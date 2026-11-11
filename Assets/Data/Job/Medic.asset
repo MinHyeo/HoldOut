@@ -16,6 +16,8 @@ MonoBehaviour:
   JobName: Medic
   JobIcon: {fileID: -2107635840499197786, guid: bf1a82955c6a9cd4ab0a77b602913781, type: 3}
   AnimatorController: {fileID: 22100000, guid: 12ffcf793eff2054bb8d27d3d7cfd12d, type: 2}
-  hp: 7
-  power: 3
-  defence: 5
+  Hp: 0
+  Power: 0
+  Defence: 0
+  AbilityDatas:
+  - {fileID: 11400000, guid: 019169c0598686748b9428ad28c8240e, type: 2}

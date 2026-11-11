@@ -29,7 +29,7 @@ public class ArcherAbility : Ability
     protected override bool TryActivate()
     {
         Vector2 origin = Owner.transform.position;
-        float range = _data.ArrowSpeed * _data.LifeTime;
+        float range = _data.Speed * _data.LifeTime;
 
         Monster target = TargetFinder.FindNearest(origin, range);
         if (target == null) return false;
@@ -47,7 +47,7 @@ public class ArcherAbility : Ability
         _arrows.Add(arrow);
 
         // 모두에게 "이 화살을 이 위치에서 이 방향으로 쐈다"만 알림
-        Owner.PlayArrowClientRpc(arrow.Id, origin, dir, _data.ArrowSpeed, _data.LifeTime, _data.EffectPath);
+        Owner.PlayProjectileClientRpc(arrow.Id, origin, dir, _data.Speed, _data.LifeTime, _data.EffectPath);
         return true;
     }
 
@@ -57,7 +57,7 @@ public class ArcherAbility : Ability
         for (int i = _arrows.Count - 1; i >= 0; i--)
         {
             ArrowState arrow = _arrows[i];
-            float distance = _data.ArrowSpeed * deltaTime;
+            float distance = _data.Speed * deltaTime;
 
             // 이번 프레임에 지나간 구간 전체를 검사 (빠른 화살이 적을 건너뛰지 않게)
             TargetFinder.FindAlongPath(arrow.Position, arrow.Direction, distance, _data.HitRadius, _targets);
@@ -92,7 +92,7 @@ public class ArcherAbility : Ability
         _arrows.RemoveAt(index);
         if (hit)
         {
-            Owner.ArrowHitClientRpc(arrow.Id);   // 맞아서 사라질 때만 알림
+            Owner.ProjectileHitClientRpc(arrow.Id);   // 맞아서 사라질 때만 알림
         }
     }
 }
