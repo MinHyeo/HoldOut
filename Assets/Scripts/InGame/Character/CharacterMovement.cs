@@ -8,9 +8,8 @@ using static UnityEngine.Rendering.DebugUI;
 [RequireComponent(typeof(Rigidbody2D))]
 public class CharacterMovement : NetworkBehaviour
 {
-    private float _moveSpeed = 4f;
+    private NetworkVariable<float> _moveSpeed = new(4f);
 
-    private Animator _anim;
     private Rigidbody2D _rigid;
     private PlayerInput _moveAction;
     private Vector2 _input;
@@ -23,7 +22,6 @@ public class CharacterMovement : NetworkBehaviour
 
     private void Awake()
     {
-        _anim = GetComponentInChildren<Animator>();
         _moveAction = GetComponent<PlayerInput>();
         _rigid = GetComponent<Rigidbody2D>();
         _rigid.gravityScale = 0;
@@ -55,11 +53,19 @@ public class CharacterMovement : NetworkBehaviour
         if (IsOwner == false)
             return;
 
-        _rigid.linearVelocity = _input.normalized * _moveSpeed;
+        _rigid.linearVelocity = _input.normalized * _moveSpeed.Value;
 
         Vector2 rounded = new(Mathf.Round(_input.x), Mathf.Round(_input.y));
         if (_moveInput.Value != rounded)
             _moveInput.Value = rounded;
+    }
+
+    public void SetMoveSpeed(float speed)
+    {
+        if (IsServer == false)
+            return;
+
+        _moveSpeed.Value = speed;
     }
 
     private void OnMove(InputValue value)

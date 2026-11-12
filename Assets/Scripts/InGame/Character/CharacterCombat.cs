@@ -5,13 +5,16 @@ using UnityEngine;
 public class CharacterCombat : NetworkBehaviour 
 {
     private readonly List<Ability> _abilities = new();
-
     private readonly Dictionary<int, ProjectileEffect> _projectileEffects = new();
 
-    public void InitAbilities(JobData data)
+    public Character Character { get; private set; }
+
+    public void InitAbilities(JobData data, Character character)
     {
         if (IsServer == false)
             return;
+
+        Character = character;
 
         _abilities.Clear();
         foreach(var abilityData in data.AbilityDatas)
