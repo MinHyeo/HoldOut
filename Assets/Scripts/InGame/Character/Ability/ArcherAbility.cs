@@ -29,10 +29,11 @@ public class ArcherAbility : Ability
     protected override bool TryActivate()
     {
         Vector2 origin = Owner.transform.position;
-        float range = _data.Speed * _data.LifeTime;
+        float range = _data.range;
 
         Monster target = TargetFinder.FindNearest(origin, range);
-        if (target == null) return false;
+        if (target == null) 
+            return false;
 
         Vector2 dir = ((Vector2)target.transform.position - origin).normalized;
 

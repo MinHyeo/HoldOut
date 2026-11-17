@@ -19,7 +19,7 @@ MonoBehaviour:
   Speed: 6
   HitRadius: 0.25
   Lifetime: 1
-  OrbEffectPath: Effect/MagicOrb
+  OrbEffectPath: Effect/Orb
   ExplosionRadius: 1.2
   ExplodeOnExpire: 1
   ExplosionEffectPath: Effect/Explosion

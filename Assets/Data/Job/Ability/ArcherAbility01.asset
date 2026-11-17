@@ -15,8 +15,8 @@ MonoBehaviour:
   Id: Data/Job/Ability/Archer/01
   Cooldown: 1
   damage: 10
-  range: 7
-  ArrowSpeed: 10
+  range: 5
+  Speed: 9
   HitRadius: 0.2
   PierceCount: 0
   LifeTime: 1.5

@@ -59,7 +59,7 @@ public class CharacterCombat : NetworkBehaviour
     }
 
     [Rpc(SendTo.ClientsAndHost)]
-    public void PlayProjectileClientRpc(int arrowId, Vector2 origin, Vector2 direction, float speed, float lifeTime, string effectPath)
+    public void PlayProjectileClientRpc(int projectileId, Vector2 origin, Vector2 direction, float speed, float lifeTime, string effectPath)
     {
         GameObject obj = GameObjectManager.Instance.CreateObject(effectPath, origin);
         if (obj == null || obj.TryGetComponent(out ProjectileEffect projectile) == false)
@@ -70,19 +70,19 @@ public class CharacterCombat : NetworkBehaviour
         obj.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
         // id로 기억해두기
-        _projectileEffects[arrowId] = projectile;
+        _projectileEffects[projectileId] = projectile;
 
         // 받은 방향·속도·수명으로 날리기. 끝나면 목록에서 제거
-        projectile.Play(direction, speed, lifeTime, () => _projectileEffects.Remove(arrowId));
+        projectile.Play(direction, speed, lifeTime, () => _projectileEffects.Remove(projectileId));
     }
 
     [Rpc(SendTo.ClientsAndHost)]
     public void ProjectileHitClientRpc(int arrowId)
     {
         // 서버에서 맞았다고 알려주면 그 화살 그림을 바로 사라지게
-        if (_projectileEffects.TryGetValue(arrowId, out ProjectileEffect arrow))
+        if (_projectileEffects.TryGetValue(arrowId, out ProjectileEffect projectile))
         {
-            arrow.Finish();
+            projectile.Finish();
         }
     }
 
