@@ -15,8 +15,18 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: d3fd1ba7064de5e45b38bc262dc7c19a
   m_SerializeEntries:
+  - m_GUID: 61efb9237874f4d4cb5ac04460a0ec6d
+    m_Address: Mosnter
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6970188d70b0b5a4fba6e50c7e09e002
     m_Address: Effect/WarriorSword
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a932ec15b47658498612229bcb0a245
+    m_Address: Effect/Explosion
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
