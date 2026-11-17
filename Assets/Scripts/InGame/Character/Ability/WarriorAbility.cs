@@ -22,6 +22,9 @@ public class WarriorAbility : Ability
         TargetFinder.FindInRange(origin, _data.range, _targets);
         foreach (Monster monster in _targets)
         {
+            if (monster == null)
+                continue;
+
             Vector2 to = (Vector2)monster.transform.position - origin;
             if (Vector2.Angle(dir, to) <= _data.halfAngle)
                 monster.TakeDamage(_data.damage);
