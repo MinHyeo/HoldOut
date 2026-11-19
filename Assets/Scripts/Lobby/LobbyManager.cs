@@ -127,16 +127,16 @@ public class LobbyManager : SingletonBase<LobbyManager>
             LocalPlayerName = playerName;
             await SubscribeLobbyEvents();
 
-            string joinCode = null;
+            string relayJoinCode = null;
 
             // JoinCode 찾기
             if (joinRoom.Data != null && joinRoom.Data.ContainsKey(_joinCodeKey) && joinRoom.Data[_joinCodeKey] != null)
             {
-                joinCode = joinRoom.Data[_joinCodeKey].Value;
+                relayJoinCode = joinRoom.Data[_joinCodeKey].Value;
             }
 
             // 참여 실패
-            if (string.IsNullOrEmpty(joinCode))
+            if (string.IsNullOrEmpty(relayJoinCode))
             {
                 Debug.Log("JoinCode가 데이터에 없습니다!");
                 await LeaveRoom();
@@ -144,7 +144,7 @@ public class LobbyManager : SingletonBase<LobbyManager>
             }
 
             // 연결할 곳 설정
-            var data = await RelayManager.Instance.JoinRelay(joinCode, "production");
+            var data = await RelayManager.Instance.JoinRelay(relayJoinCode, "production");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(
                 data.IPv4Address,
                 data.Port,
@@ -166,6 +166,69 @@ public class LobbyManager : SingletonBase<LobbyManager>
         {
             Debug.LogError($"[Lobby] 방 입장 실패 {e.Message}");
             await LeaveRoom();
+            return false;
+        }
+    }
+
+    public async Task<bool> JoinRoomByCode(string joinCode, string playerName)
+    {
+        try
+        {
+            var options = new JoinLobbyByCodeOptions
+            {
+                Player = new Player(
+                    id: _playerId,
+                    data: new Dictionary<string, PlayerDataObject>
+                    {
+                        {
+                            _playerNameKey,
+                            new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerName)
+                        }
+                    }
+                ),
+            };
+
+            Lobby joinRoom = await LobbyService.Instance.JoinLobbyByCodeAsync(joinCode, options);
+            _currentLobby = joinRoom;
+            await SubscribeLobbyEvents();
+
+            string relayJoinCode = null;
+
+            // JoinCode 찾기
+            if (joinRoom.Data != null && joinRoom.Data.ContainsKey(_joinCodeKey) && joinRoom.Data[_joinCodeKey] != null)
+            {
+                relayJoinCode = joinRoom.Data[_joinCodeKey].Value;
+            }
+
+            // 참여 실패
+            if (string.IsNullOrEmpty(relayJoinCode))
+            {
+                Debug.Log("JoinCode가 데이터에 없습니다!");
+                await LeaveRoom();
+                return false;
+            }
+
+            var data = await RelayManager.Instance.JoinRelay(relayJoinCode, "production");
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(
+                data.IPv4Address,
+                data.Port,
+                data.AllocationIDBytes,
+                data.Key,
+                data.ConnectionData,
+                data.HostConnectionData);
+
+            if (NetworkManager.Singleton.StartClient() == false)
+            {
+                Debug.LogError("클라이언트 시작 실패");
+                await LeaveRoom();
+                return false;
+            }
+
+            return true;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
             return false;
         }
     }

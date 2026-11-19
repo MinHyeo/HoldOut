@@ -17,6 +17,7 @@ public enum UIType
     RoomView,
     CreateRoomPopup,
     JobSelectPopup,
+    JoinRoomPopup,
 }
 
 public static class UIManagerExtension

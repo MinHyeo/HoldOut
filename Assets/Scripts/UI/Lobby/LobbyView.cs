@@ -86,6 +86,6 @@ public class LobbyView : UIBase
 
     private void OnClickJoinRoomButton()
     {
-        
+        UIManager.Instance.OpenUI(UIRootType.PopupUI, UIType.JoinRoomPopup);
     }
 }

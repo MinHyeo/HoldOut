@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 7837561991155650092}
   - component: {fileID: 1516031055740659330}
   - component: {fileID: 8051210983995449851}
+  - component: {fileID: 8468702726871989435}
   m_Layer: 0
   m_Name: Exit Button
   m_TagString: Untagged
@@ -333,6 +334,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8468702726871989435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828040864195462254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a8ead1f75ad4c4a8fcb1649fc4df49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  Button_Base: {fileID: 8051210983995449851}
+  Image_Base: {fileID: 0}
+  Text_Base: {fileID: 0}
 --- !u!1 &884122153620325624
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +550,7 @@ GameObject:
   - component: {fileID: 8212048562395810319}
   - component: {fileID: 5580480598986964579}
   - component: {fileID: 3271390742277968424}
+  - component: {fileID: 7223730255485964309}
   m_Layer: 0
   m_Name: Enter Button
   m_TagString: Untagged
@@ -643,6 +660,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7223730255485964309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435222194945730989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a8ead1f75ad4c4a8fcb1649fc4df49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  Button_Base: {fileID: 3271390742277968424}
+  Image_Base: {fileID: 0}
+  Text_Base: {fileID: 0}
 --- !u!1 &4723725896968858091
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,6 +684,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 88234884570519285}
+  - component: {fileID: 7079163593925870922}
   m_Layer: 0
   m_Name: JoinRoomPopup
   m_TagString: Untagged
@@ -684,6 +717,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7079163593925870922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4723725896968858091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455d6ff68f4aa114d8f6665b12adbed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JoinRoomPopup
+  _joinCodeInputField: {fileID: 5697264413798676932}
+  _enterButton: {fileID: 7223730255485964309}
+  _exitButton: {fileID: 8468702726871989435}
 --- !u!1 &5025974889523290180
 GameObject:
   m_ObjectHideFlags: 0
