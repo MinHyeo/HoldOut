@@ -9,6 +9,8 @@ public class JoinRoomPopup : UIBase
     [SerializeField] private UIButton _enterButton;
     [SerializeField] private UIButton _exitButton;
 
+    [SerializeField] private ErrorMessageText _errorMessagText;
+
     private void OnEnable()
     {
         _enterButton.BindOnClickButtonEvent(OnClickEnterButton);
@@ -34,6 +36,7 @@ public class JoinRoomPopup : UIBase
         else
         {
             Debug.LogWarning("방 입장 실패");
+            _errorMessagText.Show("Not Find Room");
         }
     }
 
