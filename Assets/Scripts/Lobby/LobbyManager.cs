@@ -11,6 +11,7 @@ using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using Unity.Services.Multiplayer;
 using UnityEngine;
+using static UnityEngine.LowLevelPhysics2D.PhysicsLayers;
 
 public class LobbyManager : SingletonBase<LobbyManager>
 {
@@ -122,45 +123,9 @@ public class LobbyManager : SingletonBase<LobbyManager>
                 ),
             };
             Lobby joinRoom = await LobbyService.Instance.JoinLobbyByIdAsync(roomId, options);
-            Debug.Log($"입장하는 방 Id : {roomId}");
-            _currentLobby = joinRoom;
-            LocalPlayerName = playerName;
-            await SubscribeLobbyEvents();
+            bool isConnected = await TryConnectRoom(joinRoom, playerName);
 
-            string relayJoinCode = null;
-
-            // JoinCode 찾기
-            if (joinRoom.Data != null && joinRoom.Data.ContainsKey(_joinCodeKey) && joinRoom.Data[_joinCodeKey] != null)
-            {
-                relayJoinCode = joinRoom.Data[_joinCodeKey].Value;
-            }
-
-            // 참여 실패
-            if (string.IsNullOrEmpty(relayJoinCode))
-            {
-                Debug.Log("JoinCode가 데이터에 없습니다!");
-                await LeaveRoom();
-                return false;
-            }
-
-            // 연결할 곳 설정
-            var data = await RelayManager.Instance.JoinRelay(relayJoinCode, "production");
-            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(
-                data.IPv4Address,
-                data.Port,
-                data.AllocationIDBytes,
-                data.Key,
-                data.ConnectionData,
-                data.HostConnectionData);
-
-            if (NetworkManager.Singleton.StartClient() == false)
-            {
-                Debug.LogError("클라이언트 시작 실패");
-                await LeaveRoom();
-                return false;
-            }
-
-            return true;
+            return isConnected;
         }
         catch (System.Exception e)
         {
@@ -189,48 +154,56 @@ public class LobbyManager : SingletonBase<LobbyManager>
             };
 
             Lobby joinRoom = await LobbyService.Instance.JoinLobbyByCodeAsync(joinCode, options);
-            _currentLobby = joinRoom;
-            await SubscribeLobbyEvents();
+            bool isConnected = await TryConnectRoom(joinRoom, playerName);
 
-            string relayJoinCode = null;
-
-            // JoinCode 찾기
-            if (joinRoom.Data != null && joinRoom.Data.ContainsKey(_joinCodeKey) && joinRoom.Data[_joinCodeKey] != null)
-            {
-                relayJoinCode = joinRoom.Data[_joinCodeKey].Value;
-            }
-
-            // 참여 실패
-            if (string.IsNullOrEmpty(relayJoinCode))
-            {
-                Debug.Log("JoinCode가 데이터에 없습니다!");
-                await LeaveRoom();
-                return false;
-            }
-
-            var data = await RelayManager.Instance.JoinRelay(relayJoinCode, "production");
-            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(
-                data.IPv4Address,
-                data.Port,
-                data.AllocationIDBytes,
-                data.Key,
-                data.ConnectionData,
-                data.HostConnectionData);
-
-            if (NetworkManager.Singleton.StartClient() == false)
-            {
-                Debug.LogError("클라이언트 시작 실패");
-                await LeaveRoom();
-                return false;
-            }
-
-            return true;
+            return isConnected;
         }
         catch (Exception e)
         {
             Debug.LogError(e);
             return false;
         }
+    }
+
+    private async Task<bool> TryConnectRoom(Lobby joinRoom, string playerName)
+    {
+        _currentLobby = joinRoom;
+        LocalPlayerName = playerName;
+        await SubscribeLobbyEvents();
+
+        string relayJoinCode = null;
+
+        // JoinCode 찾기
+        if (joinRoom.Data != null && joinRoom.Data.ContainsKey(_joinCodeKey) && joinRoom.Data[_joinCodeKey] != null)
+        {
+            relayJoinCode = joinRoom.Data[_joinCodeKey].Value;
+        }
+
+        // 참여 실패
+        if (string.IsNullOrEmpty(relayJoinCode))
+        {
+            Debug.Log("JoinCode가 데이터에 없습니다!");
+            await LeaveRoom();
+            return false;
+        }
+
+        var data = await RelayManager.Instance.JoinRelay(relayJoinCode, "production");
+        NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(
+            data.IPv4Address,
+            data.Port,
+            data.AllocationIDBytes,
+            data.Key,
+            data.ConnectionData,
+            data.HostConnectionData);
+
+        if (NetworkManager.Singleton.StartClient() == false)
+        {
+            Debug.LogError("클라이언트 시작 실패");
+            await LeaveRoom();
+            return false;
+        }
+
+        return true;
     }
 
     private async Task LeaveRoom()
