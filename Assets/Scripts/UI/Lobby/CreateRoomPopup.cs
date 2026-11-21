@@ -7,6 +7,8 @@ public class CreateRoomPopup : UIBase
     [SerializeField] private UIButton _createButton;
     [SerializeField] private UIButton _exitButton;
 
+    [SerializeField] private ErrorMessageText _errorMessageText;
+
     private string _playerName;
 
     private void OnEnable()
@@ -31,7 +33,11 @@ public class CreateRoomPopup : UIBase
     private async void OnClickCreateButton()
     {
         if (_roomNameInput.text == string.Empty)
+        {
+            _errorMessageText.Show("Please Enter Room Name");
             return;
+        }
+            
 
         string roomName = _roomNameInput.text;
         bool isSuccessed = await LobbyManager.Instance.CreateRoom(roomName, _playerName);
