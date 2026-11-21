@@ -22,3 +22,4 @@ MonoBehaviour:
   Defence: 7
   AbilityDatas:
   - {fileID: 11400000, guid: 019169c0598686748b9428ad28c8240e, type: 2}
+  - {fileID: 11400000, guid: 41d4fbf59d16a8b40979eda7a72c09b1, type: 2}
