@@ -15,6 +15,8 @@ public class JoinRoomPopup : UIBase
 
     private void OnEnable()
     {
+        _joinCodeInputField.text = string.Empty;
+
         _enterButton.BindOnClickButtonEvent(OnClickEnterButton);
         _exitButton.BindOnClickButtonEvent(OnClickExitButton);
     }
