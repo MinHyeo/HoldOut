@@ -40,7 +40,7 @@ public class LobbyManager : SingletonBase<LobbyManager>
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
-    public async Task<bool> CreateRoom(string playerName)
+    public async Task<bool> CreateRoom(string roomName, string playerName)
     {
         if (_isBusy)
         {
@@ -77,7 +77,7 @@ public class LobbyManager : SingletonBase<LobbyManager>
             };
 
             // 로비 생성
-            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(_playerId, _maxPlayer, options);
+            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(roomName, _maxPlayer, options);
             _currentLobby = lobby;
             LocalPlayerName = playerName;
             await SubscribeLobbyEvents();

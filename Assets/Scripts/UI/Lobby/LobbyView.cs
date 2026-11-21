@@ -73,15 +73,17 @@ public class LobbyView : UIBase
         // 방 만들어지는 동안 비활성화
         _createRoomButton.SetInteractable(false);
         string name = _nameInput.text;
-        bool isSuccess = await LobbyManager.Instance.CreateRoom(name);
-        _createRoomButton.SetInteractable(true);
+        UIManager.Instance.OpenCreateRoomPopup(name);
 
-        // 룸 UI로 전환
-        if (isSuccess)
-        {
-            UIManager.Instance.CloseUI(UIRootType.MainUI, UIType.LobbyView);
-            UIManager.Instance.OpenUI(UIRootType.MainUI, UIType.RoomView);
-        }
+        //bool isSuccess = await LobbyManager.Instance.CreateRoom(name);
+        //_createRoomButton.SetInteractable(true);
+
+        //// 룸 UI로 전환
+        //if (isSuccess)
+        //{
+        //    UIManager.Instance.CloseUI(UIRootType.MainUI, UIType.LobbyView);
+        //    UIManager.Instance.OpenUI(UIRootType.MainUI, UIType.RoomView);
+        //}
     }
 
     private void OnClickJoinRoomButton()

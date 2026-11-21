@@ -13,8 +13,11 @@ public enum UIRootType
 
 public enum UIType
 {
+    // MainUI
     LobbyView,
     RoomView,
+
+    // PopupUI
     CreateRoomPopup,
     JobSelectPopup,
     JoinRoomPopup,
@@ -36,6 +39,15 @@ public static class UIManagerExtension
         if(uibase is JoinRoomPopup joinRoomPopup)
         {
             joinRoomPopup.OpenJoinRoomPopup(name);
+        }
+    }
+
+    public static void OpenCreateRoomPopup(this UIManager uiManager, string name)
+    {
+        var uibase = UIManager.Instance.OpenUI(UIRootType.PopupUI, UIType.CreateRoomPopup);
+        if(uibase is CreateRoomPopup createRoomPopup)
+        {
+            createRoomPopup.OpenCreateRoomPopup(name);
         }
     }
 }
