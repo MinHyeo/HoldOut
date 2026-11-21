@@ -29,4 +29,13 @@ public static class UIManagerExtension
         path = $"UI/{uiRootType}/{uiType}";
         return path;
     }
+
+    public static void OpenJoinRoomPopup(this UIManager uiManager, string name)
+    {
+        var uibase = UIManager.Instance.OpenUI(UIRootType.PopupUI, UIType.JoinRoomPopup);
+        if(uibase is JoinRoomPopup joinRoomPopup)
+        {
+            joinRoomPopup.OpenJoinRoomPopup(name);
+        }
+    }
 }

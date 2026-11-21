@@ -11,6 +11,8 @@ public class JoinRoomPopup : UIBase
 
     [SerializeField] private ErrorMessageText _errorMessagText;
 
+    private string _name = string.Empty;
+
     private void OnEnable()
     {
         _enterButton.BindOnClickButtonEvent(OnClickEnterButton);
@@ -23,11 +25,16 @@ public class JoinRoomPopup : UIBase
         _exitButton.UnBindOnClickButtonEvent(OnClickExitButton);
     }
 
+    public void OpenJoinRoomPopup(string name)
+    {
+        _name = name;
+    }
+
     private async void OnClickEnterButton()
     {
         string joinCode = _joinCodeInputField.text;
 
-        if(await LobbyManager.Instance.JoinRoomByCode(joinCode, "dd"))
+        if(await LobbyManager.Instance.JoinRoomByCode(joinCode, _name))
         {
             UIManager.Instance.CloseUI(UIRootType.MainUI, UIType.LobbyView);
             UIManager.Instance.CloseUI(UIRootType.PopupUI, UIType.JoinRoomPopup);
