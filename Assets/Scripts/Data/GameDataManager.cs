@@ -11,6 +11,7 @@ public class GameDataManager : SingletonBase<GameDataManager>
     {
         LoadData<JobData>();
         LoadData<AbilityData>();
+        LoadData<UpgradeData>();
     }
 
     public async void LoadData<T>() where T : GameDataBase

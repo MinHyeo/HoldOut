@@ -15,14 +15,32 @@ MonoBehaviour:
   m_GroupName: Data
   m_GUID: 13567895f245c5c419ea3b7939be9f8b
   m_SerializeEntries:
+  - m_GUID: 07b8847f586852a44a8e0f6a10fda3ab
+    m_Address: Data/Job/UpgradeStat/MoveSpeed
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Data
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 204eb218ddc037a4996a34e7236c4d47
     m_Address: Data/Job/Warrior
     m_ReadOnly: 0
     m_SerializedLabels:
     - Data
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 25e48dbcd0ed0c44cb7c8099cce3a37f
+    m_Address: Data/Job/UpgradeStat/AttackSpeed
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Data
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2944896bb571b574fb60a62e70c1f5e5
     m_Address: Data/Job/Archer
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Data
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5d914d60e71ff7744b7fd027b73cb8c8
+    m_Address: Data/Job/UpgradeStat/MaxHp
     m_ReadOnly: 0
     m_SerializedLabels:
     - Data
@@ -39,8 +57,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - Data
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad6a2c55de2a7b24c83121b226fef68b
+    m_Address: Data/Job/UpgradeStat/AttackPower
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Data
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cb45fb1da2b576d4c95b4cce8a4115ba
     m_Address: Data/Job/Ability/Warrior/01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Data
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e314d3cbff31d964f95f1e3ffb45b097
+    m_Address: Data/Job/UpgradeStat/AttackRange
     m_ReadOnly: 0
     m_SerializedLabels:
     - Data
