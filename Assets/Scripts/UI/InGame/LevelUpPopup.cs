@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 public class LevelUpPopup : UIBase
@@ -29,7 +30,8 @@ public class LevelUpPopup : UIBase
     {
         string path = $"Data/Job/UpgradeStat/{type.ToString()}";
         var data = GameDataManager.Instance.GetData<UpgradeData>(path);
-        //data.Apply();
+        var character = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<Character>();
+        data.Apply(character);
 
         GameManager.Instance.MatchState.IsRoundPaused.Value = false;
         UIManager.Instance.CloseUI(UIRootType.PopupUI, UIType.LevelUpPopup);

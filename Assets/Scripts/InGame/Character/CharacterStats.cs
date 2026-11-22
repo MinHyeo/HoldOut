@@ -6,7 +6,6 @@ public class CharacterStats
     public float MaxHp { get; private set; }
     public float MoveSpeed { get; private set; }
     public float Power { get; private set; }
-    public float Defence { get; private set; }
 
     public event Action OnValueChanged;
 
@@ -15,30 +14,43 @@ public class CharacterStats
         MaxHp = data.Hp;
         MoveSpeed = data.MoveSpeed;
         Power = data.Power;
-        Defence = data.Defence;
     }
 
-    public void AddMaxHp(float amount)
+    public void ApplyPercentBonus(StatType type, float percent)
+    {
+        switch (type)
+        {
+            case StatType.MaxHp:
+                AddMaxHp(percent);
+                break;
+            case StatType.AttackPower:
+                AddPower(percent);
+                break;
+            case StatType.AttackRange:
+                break;
+            case StatType.AttackSpeed:
+                break;
+            case StatType.MoveSpeed:
+                AddMoveSpeed(percent);
+                break;
+        }
+    }
+
+    private void AddMaxHp(float amount)
     {
         MaxHp = MaxHp + amount;
         OnValueChanged?.Invoke();
     }
 
-    public void AddMoveSpeed(float pecent)
+    private void AddMoveSpeed(float pecent)
     {
         MoveSpeed = MoveSpeed + MoveSpeed * (pecent / 100);
         OnValueChanged?.Invoke();
     }
 
-    public void AddPower(float pecent)
+    private void AddPower(float pecent)
     {
         Power = Power + Power * (pecent / 100);
-        OnValueChanged?.Invoke();
-    }
-
-    public void AddDefence(float pecent)
-    {
-        Defence = Defence + Power * (pecent / 100);
         OnValueChanged?.Invoke();
     }
 }
