@@ -16,6 +16,7 @@ public class MatchState : NetworkBehaviour
     private const string _defalutJobId = "Job_Random";
 
     public NetworkVariable<GamePhase> Phase { get; } = new(GamePhase.Room);
+    public NetworkVariable<bool> IsRoundPaused = new(false);
     private NetworkList<RoomPlayerState> _players;
 
     public event Action OnPlayerChanged;

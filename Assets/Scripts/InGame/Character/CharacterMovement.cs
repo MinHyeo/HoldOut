@@ -50,7 +50,7 @@ public class CharacterMovement : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        if (IsOwner == false)
+        if (IsOwner == false || GameManager.Instance.MatchState.IsRoundPaused.Value)
             return;
 
         _rigid.linearVelocity = _input.normalized * _moveSpeed.Value;

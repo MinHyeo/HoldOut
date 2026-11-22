@@ -3,7 +3,10 @@
 public class GameManager : SingletonBase<GameManager> 
 {
     [SerializeField] private MatchState _matchState;
+    [SerializeField] private PartyProgress _partyProgress;
+
     public MatchState MatchState => _matchState;
+    public PartyProgress PartyProgress => _partyProgress;
 
     private void OnEnable()
     {

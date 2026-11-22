@@ -30,7 +30,7 @@ public class CharacterCombat : NetworkBehaviour
 
     private void Update()
     {
-        if (IsServer == false)
+        if (IsServer == false || GameManager.Instance.MatchState.IsRoundPaused.Value)
             return;
 
         foreach(var ability in _abilities)

@@ -64,7 +64,7 @@ public class MonsterSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (!_running)
+        if (_running == false || GameManager.Instance.MatchState.IsRoundPaused.Value)
             return;
 
         _elapsed += Time.deltaTime;

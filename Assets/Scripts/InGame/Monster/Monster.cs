@@ -8,6 +8,7 @@ public class Monster : NetworkBehaviour
     [SerializeField] private float _maxHp = 30f;
     [SerializeField] private float _moveSpeed = 2f;
     [SerializeField] private float _retargetInterval = 0.5f;
+    [SerializeField] private float _exp = 10f;
     [SerializeField] private SpriteRenderer _sprite;
 
     private readonly NetworkVariable<float> _hp = new(30f);
@@ -22,7 +23,7 @@ public class Monster : NetworkBehaviour
     private void Awake()
     {
         var rigid = GetComponent<Rigidbody2D>();
-        rigid.bodyType = RigidbodyType2D.Kinematic;   // 물리로 밀지 않고 transform으로 이동
+        rigid.bodyType = RigidbodyType2D.Kinematic;
         rigid.gravityScale = 0f;
     }
 
@@ -43,7 +44,7 @@ public class Monster : NetworkBehaviour
 
     private void Update()
     {
-        if (!IsServer || !IsAlive)
+        if (IsServer == false || IsAlive == false || GameManager.Instance.MatchState.IsRoundPaused.Value)
             return;
 
         _retargetTimer -= Time.deltaTime;
@@ -96,5 +97,6 @@ public class Monster : NetworkBehaviour
     private void Die()
     {
         NetworkObject.Despawn(destroy: true);   // 모든 화면에서 사라짐
+        GameManager.Instance.PartyProgress.AddProgressExp(_exp);
     }
 }
