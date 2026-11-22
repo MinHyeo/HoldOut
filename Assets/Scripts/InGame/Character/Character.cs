@@ -3,10 +3,11 @@ using Unity.Netcode;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class Character : NetworkBehaviour
 {
-    public NetworkVariable<FixedString64Bytes> JobId;// = new NetworkVariable<FixedString64Bytes>("Job_Random");
+    public NetworkVariable<FixedString64Bytes> JobId;
     public CharacterStats Stats { get; private set; } = new();
 
     private JobData _jobData;
@@ -60,5 +61,14 @@ public class Character : NetworkBehaviour
     {
         _health.SetMaxHp(Stats.MaxHp);
         _movement.SetMoveSpeed(Stats.MoveSpeed);
+    }
+
+    [Rpc(SendTo.Server)]
+    public void RequestUpgradeRpc(string path)
+    {
+        var data = GameDataManager.Instance.GetData<UpgradeData>(path);
+        data.Apply(this);
+
+        GameManager.Instance.PartyProgress.NotifyUpgradeChosen(OwnerClientId);
     }
 }

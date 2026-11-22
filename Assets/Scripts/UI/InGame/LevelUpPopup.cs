@@ -29,11 +29,9 @@ public class LevelUpPopup : UIBase
     private void OnClickButton(StatType type)
     {
         string path = $"Data/Job/UpgradeStat/{type.ToString()}";
-        var data = GameDataManager.Instance.GetData<UpgradeData>(path);
         var character = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<Character>();
-        data.Apply(character);
+        character.RequestUpgradeRpc(path);
 
-        GameManager.Instance.MatchState.IsRoundPaused.Value = false;
         UIManager.Instance.CloseUI(UIRootType.PopupUI, UIType.LevelUpPopup);
     }
 }
