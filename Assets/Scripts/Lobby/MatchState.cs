@@ -29,6 +29,7 @@ public class MatchState : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         _players.OnListChanged += HandleListChanged;
+        IsRoundPaused.OnValueChanged += HandleRoundPausedChanged;
 
         // 방장인 경우
         if (IsServer)
@@ -165,6 +166,14 @@ public class MatchState : NetworkBehaviour
         if(index != -1)
         {
             _players.RemoveAt(index);
+        }
+    }
+
+    private void HandleRoundPausedChanged(bool previous, bool current)
+    {
+        if (current)
+        {
+            UIManager.Instance.OpenUI(UIRootType.PopupUI, UIType.LevelUpPopup);
         }
     }
 

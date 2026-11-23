@@ -45,7 +45,6 @@ public class PartyProgress : NetworkBehaviour
         if(_partyExp.Value >= _maxExp)
         {
             _partyExp.Value -= _maxExp;
-            UIManager.Instance.OpenUI(UIRootType.PopupUI, UIType.LevelUpPopup);
             GameManager.Instance.MatchState.IsRoundPaused.Value = true;
         }
     }
