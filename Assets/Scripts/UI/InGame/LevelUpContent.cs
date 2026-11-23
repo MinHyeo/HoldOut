@@ -2,7 +2,7 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class LevelUpPopup : UIBase
+public class LevelUpContent : UIBase
 {
     [SerializeField] private List<UpgradeCardButton> buttonList;
 
@@ -32,6 +32,6 @@ public class LevelUpPopup : UIBase
         var character = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<Character>();
         character.RequestUpgradeRpc(path);
 
-        UIManager.Instance.CloseUI(UIRootType.PopupUI, UIType.LevelUpPopup);
+        UIManager.Instance.CloseUI(UIRootType.PopupUI, UIType.LevelUpContent);
     }
 }

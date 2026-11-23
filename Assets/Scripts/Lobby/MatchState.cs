@@ -173,7 +173,7 @@ public class MatchState : NetworkBehaviour
     {
         if (current)
         {
-            UIManager.Instance.OpenUI(UIRootType.PopupUI, UIType.LevelUpPopup);
+            UIManager.Instance.OpenUI(UIRootType.ContentUI, UIType.LevelUpContent);
         }
     }
 
