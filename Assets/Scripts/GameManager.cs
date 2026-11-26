@@ -23,7 +23,8 @@ public class GameManager : SingletonBase<GameManager>
         if(current == GamePhase.InGame)
         {
             UIManager.Instance.CloseUI(UIRootType.MainUI, UIType.RoomView);
-            // UIManager.Instance.OpenUI(UIRootType.MainUI, UIType.GameHUD);
+            UIManager.Instance.CloseUI(UIRootType.MainUI, UIType.ResultView);
+            UIManager.Instance.OpenUI(UIRootType.MainUI, UIType.HudView);
         }
     }
 }
