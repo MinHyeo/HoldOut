@@ -8,6 +8,7 @@ public enum GamePhase : byte
 {
     Room,
     InGame,
+    Result,
 }
 
 
@@ -109,6 +110,21 @@ public class MatchState : NetworkBehaviour
         Phase.Value = GamePhase.InGame;
     }
 
+    public void CheckAllDowned()
+    {
+        foreach (var client in NetworkManager.ConnectedClientsList)
+        {
+            if (client.PlayerObject != null && client.PlayerObject.TryGetComponent(out CharacterHealth health)
+                && health.IsDowned == false)
+            {
+                return;
+            }
+        }
+
+        Phase.Value = GamePhase.Result;
+        EndMatchRpc();
+    }
+
     // 서버
 
     // RPC
@@ -151,6 +167,13 @@ public class MatchState : NetworkBehaviour
 
         player.JobId = jobId;
         _players[index] = player;
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    private void EndMatchRpc(RpcParams rpcParams = default)
+    {
+        UIManager.Instance.CloseUI(UIRootType.MainUI, UIType.HudView);
+        UIManager.Instance.OpenUI(UIRootType.MainUI, UIType.ResultView);
     }
 
     // 내부 처리

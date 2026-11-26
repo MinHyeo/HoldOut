@@ -13,8 +13,10 @@ public enum UIRootType
 
 public enum UIType
 {
+    HudView,
     LobbyView,
     RoomView,
+    ResultView,
     CreateRoomPopup,
     JobSelectPopup,
     LevelUpContent,
