@@ -60,6 +60,10 @@ public class CharacterSpawner : MonoBehaviour
 
     private void DespawnAllCharacter()
     {
-
+        foreach(var spawn in _spawned)
+        {
+            spawn.Despawn();
+        }
+        _spawned.Clear();
     }
 }
