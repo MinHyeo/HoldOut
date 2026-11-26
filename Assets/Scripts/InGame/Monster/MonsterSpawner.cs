@@ -43,9 +43,13 @@ public class MonsterSpawner : MonoBehaviour
             return;
 
         if (current == GamePhase.InGame)
+        {
             StartSpawning();
+        }
         else if (previous == GamePhase.InGame)
+        {
             StopSpawning();
+        }
     }
 
     private void StartSpawning()
