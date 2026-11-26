@@ -11,6 +11,9 @@ public class Character : NetworkBehaviour
     public CharacterStats Stats { get; private set; } = new();
 
     private JobData _jobData;
+    private bool _wasDowned = false;
+    private int _downTriggerHash = Animator.StringToHash("Down");
+    private int _isDownedHash = Animator.StringToHash("IsDowned");
 
     // Component
     private Animator _anim;
@@ -31,12 +34,14 @@ public class Character : NetworkBehaviour
         ApplyJob(JobId.Value.ToString());
         JobId.OnValueChanged += HandleJobChanged;
         Stats.OnValueChanged += ApplyStats;
+        _health.OnHpChanged += HandleHpChanged;
     }
 
     public override void OnNetworkDespawn()
     {
         JobId.OnValueChanged -= HandleJobChanged;
         Stats.OnValueChanged -= ApplyStats;
+        _health.OnHpChanged -= HandleHpChanged;
     }
 
     private void HandleJobChanged(FixedString64Bytes previous, FixedString64Bytes current)
@@ -63,6 +68,33 @@ public class Character : NetworkBehaviour
         _movement.SetMoveSpeed(Stats.MoveSpeed);
     }
 
+    private void HandleHpChanged(float hp, float maxHp)
+    {
+        bool isDowned = hp <= 0f;
+        if (isDowned == _wasDowned)
+            return;
+
+        _wasDowned = isDowned;
+        if (isDowned)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        _movement.enabled = false;
+        _combat.enabled = false;
+        _anim.SetTrigger(_downTriggerHash);
+        _anim.SetBool(_isDownedHash, true);
+
+        if (IsServer)
+        {
+            GameManager.Instance.MatchState.CheckAllDowned();
+        }
+    }
+
+    // Rpc
     [Rpc(SendTo.Server)]
     public void RequestUpgradeRpc(string path)
     {
