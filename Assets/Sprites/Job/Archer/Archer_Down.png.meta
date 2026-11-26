@@ -1,0 +1,572 @@
+fileFormatVersion: 2
+guid: 154b769e9bfe8fd45b4ed31bf2cb44c6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1037526577938469808
+    second: Archer_Down_0
+  - first:
+      213: 7901361700175764545
+    second: Archer_Down_1
+  - first:
+      213: -7220356466038473884
+    second: Archer_Down_2
+  - first:
+      213: -3693484704607698052
+    second: Archer_Down_3
+  - first:
+      213: 9061754426383351791
+    second: Archer_Down_4
+  - first:
+      213: 5455438659254137728
+    second: Archer_Down_5
+  - first:
+      213: -5356096407614473619
+    second: Archer_Down_6
+  - first:
+      213: 7623690101210368261
+    second: Archer_Down_7
+  - first:
+      213: -320154324853742916
+    second: Archer_Down_8
+  - first:
+      213: 5802872596980978445
+    second: Archer_Down_9
+  - first:
+      213: -1871145417951439754
+    second: Archer_Down_10
+  - first:
+      213: -4015130261811365910
+    second: Archer_Down_11
+  - first:
+      213: 6057289773160114118
+    second: Archer_Down_12
+  - first:
+      213: -5483810547742653201
+    second: Archer_Down_13
+  - first:
+      213: -109220915689831309
+    second: Archer_Down_14
+  - first:
+      213: -5656029696334219691
+    second: Archer_Down_15
+  - first:
+      213: 6377943124856263213
+    second: Archer_Down_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Archer_Down_0
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 37
+        width: 471
+        height: 336
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b39c03fce8066e00800000000000000
+      internalID: 1037526577938469808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Down_1
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 37
+        width: 471
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14c5ad46a9647ad60800000000000000
+      internalID: 7901361700175764545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Down_2
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 341
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46bf41a9c042ccb90800000000000000
+      internalID: -7220356466038473884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Down_3
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 37
+        width: 471
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c730586ea3b1ebcc0800000000000000
+      internalID: -3693484704607698052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Down_4
+      rect:
+        serializedVersion: 2
+        x: 1186
+        y: 342
+        width: 40
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fef376ab3a1d1cd70800000000000000
+      internalID: 9061754426383351791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Down_5
+      rect:
+        serializedVersion: 2
+        x: 1571
+        y: 37
+        width: 471
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 083b6c27e8c95bb40800000000000000
+      internalID: 5455438659254137728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Down_6
+      rect:
+        serializedVersion: 2
+        x: 1719
+        y: 341
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6ab461f1b25ba5b0800000000000000
+      internalID: -5356096407614473619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Down_7
+      rect:
+        serializedVersion: 2
+        x: 2083
+        y: 37
+        width: 471
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5094e4841c9ccc960800000000000000
+      internalID: 7623690101210368261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Down_8
+      rect:
+        serializedVersion: 2
+        x: 2246
+        y: 342
+        width: 41
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb2a9c976559e8bf0800000000000000
+      internalID: -320154324853742916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Down_9
+      rect:
+        serializedVersion: 2
+        x: 2595
+        y: 37
+        width: 471
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0356ebc1e1f78050800000000000000
+      internalID: 5802872596980978445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Down_10
+      rect:
+        serializedVersion: 2
+        x: 2767
+        y: 341
+        width: 36
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67497e7f72b5806e0800000000000000
+      internalID: -1871145417951439754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Down_11
+      rect:
+        serializedVersion: 2
+        x: 3107
+        y: 37
+        width: 471
+        height: 336
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae7ffc9cc446748c0800000000000000
+      internalID: -4015130261811365910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Down_12
+      rect:
+        serializedVersion: 2
+        x: 3619
+        y: 37
+        width: 471
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c7a0dea4f0df0450800000000000000
+      internalID: 6057289773160114118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Down_13
+      rect:
+        serializedVersion: 2
+        x: 4131
+        y: 37
+        width: 471
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe4424e7c5795e3b0800000000000000
+      internalID: -5483810547742653201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Down_14
+      rect:
+        serializedVersion: 2
+        x: 4643
+        y: 37
+        width: 471
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 374c346e728fb7ef0800000000000000
+      internalID: -109220915689831309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Down_15
+      rect:
+        serializedVersion: 2
+        x: 5155
+        y: 37
+        width: 471
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55630f645feb181b0800000000000000
+      internalID: -5656029696334219691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Down_16
+      rect:
+        serializedVersion: 2
+        x: 5667
+        y: 37
+        width: 471
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d22d3b2fa71038850800000000000000
+      internalID: 6377943124856263213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Archer_Down_0: 1037526577938469808
+      Archer_Down_1: 7901361700175764545
+      Archer_Down_10: -1871145417951439754
+      Archer_Down_11: -4015130261811365910
+      Archer_Down_12: 6057289773160114118
+      Archer_Down_13: -5483810547742653201
+      Archer_Down_14: -109220915689831309
+      Archer_Down_15: -5656029696334219691
+      Archer_Down_16: 6377943124856263213
+      Archer_Down_2: -7220356466038473884
+      Archer_Down_3: -3693484704607698052
+      Archer_Down_4: 9061754426383351791
+      Archer_Down_5: 5455438659254137728
+      Archer_Down_6: -5356096407614473619
+      Archer_Down_7: 7623690101210368261
+      Archer_Down_8: -320154324853742916
+      Archer_Down_9: 5802872596980978445
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

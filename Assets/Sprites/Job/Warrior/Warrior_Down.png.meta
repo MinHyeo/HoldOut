@@ -1,0 +1,462 @@
+fileFormatVersion: 2
+guid: ecb3b3ba573df5540a807c20a4007db8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8431524378824493064
+    second: Warrior_Down_0
+  - first:
+      213: -8477605388759355520
+    second: Warrior_Down_1
+  - first:
+      213: -3687842137405064791
+    second: Warrior_Down_2
+  - first:
+      213: 5940165580722281468
+    second: Warrior_Down_3
+  - first:
+      213: -914782431710250211
+    second: Warrior_Down_4
+  - first:
+      213: 5705192504397017673
+    second: Warrior_Down_5
+  - first:
+      213: -6606408584447223467
+    second: Warrior_Down_6
+  - first:
+      213: -3775610228699738445
+    second: Warrior_Down_7
+  - first:
+      213: 2582078759923089366
+    second: Warrior_Down_8
+  - first:
+      213: -5047028307534369356
+    second: Warrior_Down_9
+  - first:
+      213: -4703936563894223396
+    second: Warrior_Down_10
+  - first:
+      213: 1298241442906917502
+    second: Warrior_Down_11
+  - first:
+      213: 1690154970009433393
+    second: Warrior_Down_12
+  - first:
+      213: -162525938301883391
+    second: Warrior_Down_13
+  - first:
+      213: 3219363805135814060
+    second: Warrior_Down_14
+  - first:
+      213: 2329668741507977470
+    second: Warrior_Down_15
+  - first:
+      213: -7502482776306228046
+    second: Warrior_Down_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Warrior_Down_0
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 37
+        width: 468
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80841ea10cac20570800000000000000
+      internalID: 8431524378824493064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_Down_2
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 37
+        width: 468
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a9f0447d1722dcc0800000000000000
+      internalID: -3687842137405064791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_Down_4
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 37
+        width: 468
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1b742f993a0e43f0800000000000000
+      internalID: -914782431710250211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_Down_6
+      rect:
+        serializedVersion: 2
+        x: 1569
+        y: 37
+        width: 468
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5599eea05625154a0800000000000000
+      internalID: -6606408584447223467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_Down_8
+      rect:
+        serializedVersion: 2
+        x: 2081
+        y: 37
+        width: 468
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dffb43a3f265d320800000000000000
+      internalID: 2582078759923089366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_Down_10
+      rect:
+        serializedVersion: 2
+        x: 2593
+        y: 37
+        width: 468
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cddfc1f1e9248beb0800000000000000
+      internalID: -4703936563894223396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_Down_11
+      rect:
+        serializedVersion: 2
+        x: 3105
+        y: 37
+        width: 468
+        height: 338
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7a4825c6b7440210800000000000000
+      internalID: 1298241442906917502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_Down_12
+      rect:
+        serializedVersion: 2
+        x: 3617
+        y: 37
+        width: 468
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 135f5ca8df2a47710800000000000000
+      internalID: 1690154970009433393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_Down_13
+      rect:
+        serializedVersion: 2
+        x: 4129
+        y: 37
+        width: 468
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10caabc25879ebdf0800000000000000
+      internalID: -162525938301883391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_Down_14
+      rect:
+        serializedVersion: 2
+        x: 4641
+        y: 37
+        width: 468
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cadbed7e25a7dac20800000000000000
+      internalID: 3219363805135814060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_Down_15
+      rect:
+        serializedVersion: 2
+        x: 5153
+        y: 37
+        width: 468
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef01ae59065a45020800000000000000
+      internalID: 2329668741507977470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_Down_16
+      rect:
+        serializedVersion: 2
+        x: 5665
+        y: 37
+        width: 468
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b4e7c03aa3d1e790800000000000000
+      internalID: -7502482776306228046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 175442341809fef4e88cfe0dcbbfacfa
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Warrior_Down_0: 8431524378824493064
+      Warrior_Down_1: -8477605388759355520
+      Warrior_Down_10: -4703936563894223396
+      Warrior_Down_11: 1298241442906917502
+      Warrior_Down_12: 1690154970009433393
+      Warrior_Down_13: -162525938301883391
+      Warrior_Down_14: 3219363805135814060
+      Warrior_Down_15: 2329668741507977470
+      Warrior_Down_16: -7502482776306228046
+      Warrior_Down_2: -3687842137405064791
+      Warrior_Down_3: 5940165580722281468
+      Warrior_Down_4: -914782431710250211
+      Warrior_Down_5: 5705192504397017673
+      Warrior_Down_6: -6606408584447223467
+      Warrior_Down_7: -3775610228699738445
+      Warrior_Down_8: 2582078759923089366
+      Warrior_Down_9: -5047028307534369356
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
