@@ -79,6 +79,10 @@ public class Character : NetworkBehaviour
         {
             Die();
         }
+        else
+        {
+            Revive();
+        }
     }
 
     private void Die()
@@ -94,6 +98,13 @@ public class Character : NetworkBehaviour
         }
     }
 
+    private void Revive()
+    {
+        _movement.enabled = true;
+        _combat.enabled = true;
+        _anim.SetBool(_isDownedHash, false);
+    }
+
     // Rpc
     [Rpc(SendTo.Server)]
     public void RequestUpgradeRpc(string path)
@@ -102,5 +113,17 @@ public class Character : NetworkBehaviour
         data.Apply(this);
 
         GameManager.Instance.PartyProgress.NotifyUpgradeChosen(OwnerClientId);
+    }
+
+    [Rpc(SendTo.Server)]
+    public void RequestReviveRpc(NetworkObjectReference targetRef)
+    {
+        if (!targetRef.TryGet(out NetworkObject targetObject))
+            return;
+
+        if (!targetObject.TryGetComponent(out CharacterHealth targetHealth))
+            return;
+
+        targetHealth.TickRevive(Time.deltaTime);
     }
 }
