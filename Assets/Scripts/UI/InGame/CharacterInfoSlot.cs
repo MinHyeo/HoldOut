@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class CharacterInfoSlot : MonoBehaviour
 {
     [SerializeField] private Image _icon;
+    [SerializeField] private GameObject _reviveIcon;
     [SerializeField] private Slider _hpSlider;
 
     private CharacterHealth _health;
@@ -37,5 +38,7 @@ public class CharacterInfoSlot : MonoBehaviour
     {
         _hpSlider.maxValue = maxHp;
         _hpSlider.value = hp;
+
+        _reviveIcon.SetActive(hp >= 0);
     }
 }
