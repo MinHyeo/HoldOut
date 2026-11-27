@@ -39,6 +39,6 @@ public class CharacterInfoSlot : MonoBehaviour
         _hpSlider.maxValue = maxHp;
         _hpSlider.value = hp;
 
-        _reviveIcon.SetActive(hp >= 0);
+        _reviveIcon.SetActive(hp <= 0);
     }
 }
